@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/calendar_web_style.css">
+    <script src = "jquery-3.6.0.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <nav>
+        <div class = "nav login">
+            <span class = "nav"><a href = "./login_web.html">로그인 / 회원가입</a></span>
+        </div>
+        <hr class = "nav line" />
+        <div class = "nav menu">
+            <ul>
+                <li class = "nav nav_menu_item" id = "world"><a href = "./introduce_web.html">학교소개</a></li>
+                <li class = "nav nav_menu_item" id = "notice"><a href = "./notice_web.html">공지사항</a></li>
+                <li class = "nav nav_menu_item image" id = "logo"><a href = "./main_web.html"><img src="./img/1.png" width="50px" height="50px"/></a></li>
+                <li class = "nav nav_menu_item" id = "apply_form"><a href = "./anony_board_web.html">게시판</a></li>
+                <li class = "nav nav_menu_item" id = "member"><a href = "./student_web.html">구성원</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class = "float_clear"></div>
+    <div class = "cal_wrap">
+        <div class = "cal">
+            <div class = "cal_nav">
+                <a href="javascript:;" class = "nav-btn go-prev">prev</a>
+                <div class = "year-month"></div>
+                <a href="javascript:;" class = "nav-btn go-next">next</a>
+            </div>
+            <div class = "cal_content">
+                <div class = "days">
+                    <div class = "day">월</div>
+                    <div class = "day">화</div>
+                    <div class = "day">수</div>
+                    <div class = "day">목</div>
+                    <div class = "day">금</div>
+                    <div class = "day">토</div>
+                    <div class = "day">일</div>
+                </div>
+                <div class = "dates"></div>
+            </div>
+        </div>
+        <div class = "cal_discript_wrap">
+            <span>일정</span>
+            <div class = "cal_discript">
+            </div>
+        </div>
+    </div>
+    <script src="calendar.js"></script>
+</body>
+</html>

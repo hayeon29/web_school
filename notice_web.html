@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/notice_web_style.css">
+    <script src = "jquery-3.6.0.min.js"></script>
+    <script type="text/javascript"src="./js/paging.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <nav>
+        <div class = "nav login">
+            <span class = "nav"><a href = "./login_web.html">로그인 / 회원가입</a></span>
+        </div>
+        <hr class = "nav line" />
+        <div class = "nav menu">
+            <ul>
+                <li class = "nav nav_menu_item" id = "world"><a href = "./introduce_web.html">학교소개</a></li>
+                <li class = "nav nav_menu_item" id = "notice"><a href = "./notice_web.html">공지사항</a></li>
+                <li class = "nav nav_menu_item image" id = "logo"><a href = "./main_web.html"><img src="./img/1.png" width="50px" height="50px"/></a></li>
+                <li class = "nav nav_menu_item" id = "apply_form"><a href = "./anony_board_web.html">게시판</a></li>
+                <li class = "nav nav_menu_item" id = "member"><a href = "./student_web.html">구성원</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class = "float_clear"></div>
+    <article class = "notice_board" id = "notify">
+        <div class = "notice_title_board">
+            <span class = "bold title">공지사항</span>
+        </div>
+        <hr class = "notice_line" />
+        <table>
+            <tbody>
+                <tr>
+                    <td class="notice_content notice_no">6</td>
+                    <td class="notice_content notice_title"><a href="#">2022학년도 계약제교원(전일제강사) 채용</a></td>
+                    <td class="notice_content notice_writer">구**</td>
+                    <td class="notice_content notice_date">2022-04-27</td>
+                    <td class="notice_content notice_hits">51</td>
+                </tr>
+                <tr>
+                    <td class="notice_content notice_no">5</td>
+                    <td class="notice_content notice_title"><a href="#">2022학년도 1학기 중간고사 기간 중 하교시간 안내</a></td>
+                    <td class="notice_content notice_writer">임**</td>
+                    <td class="notice_content notice_date">2022-04-22</td>
+                    <td class="notice_content notice_hits">392</td>
+                </tr>
+                <tr>
+                    <td class="notice_content notice_no">4</td>
+                    <td class="notice_content notice_title"><a href="#">고사기간 중 결시로 인한 인정점 부여 기준 및 각종 서식 안내</a></td>
+                    <td class="notice_content notice_writer">김**</td>
+                    <td class="notice_content notice_date">2022-04-19</td>
+                    <td class="notice_content notice_hits">172</td>
+                </tr>
+                <tr>
+                    <td class="notice_content notice_no">3</td>
+                    <td class="notice_content notice_title"><a href="#">2022학년도 계약제교원(전일제 강사) 채용 공고</a></td>
+                    <td class="notice_content notice_writer">구**</td>
+                    <td class="notice_content notice_date">2022-04-13</td>
+                    <td class="notice_content notice_hits">134</td>
+                </tr>
+                <tr>
+                    <td class="notice_content notice_no">2</td>
+                    <td class="notice_content notice_title"><a href="#">3학년 전국연합(4월 13일) 재택응시자 안내</a></td>
+                    <td class="notice_content notice_writer">김**</td>
+                    <td class="notice_content notice_date">2022-04-12</td>
+                    <td class="notice_content notice_hits">70</td>
+                </tr>
+                <tr>
+                    <td class="notice_content notice_no last">1</td>
+                    <td class="notice_content notice_title last"><a href="#">4/13(수) 하교시간 안내</a></td>
+                    <td class="notice_content notice_writer last">임**</td>
+                    <td class="notice_content notice_date last">2022-04-11</td>
+                    <td class="notice_content notice_hits last">174</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class = "paging">
+            <a onclick="prev_page()" class = "arrow"><img src = "./img/left_pink.png"></a>
+            <a onclick="paging(1)" class = "cur view" value = "1">1</a>
+            <a onclick="paging(2)" class = "view" value="2">2</a>
+            <a onclick="paging(3)" class = "view" value="3">3</a>
+            <a onclick="paging(4)" class = "view" value="4">4</a>
+            <a onclick="paging(5)" class = "view" value="5">5</a>
+            <a onclick="next_page()" class = "arrow"><img src = "./img/right_pink.png"></a>
+        </div>
+    </article>
+</body>
+</html>

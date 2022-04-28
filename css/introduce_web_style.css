@@ -1,0 +1,111 @@
+html{
+    width: 100%;
+}
+
+body{
+    margin: 0 auto;
+}
+
+a{
+    text-decoration: none;
+}
+
+ul{
+    padding: 0;
+    margin: 0;
+}
+
+ol{
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+li{
+    list-style-type: none;
+}
+
+.bold{
+    font-weight: bold;
+}
+
+.top_right_margin{
+    margin-top: 20px;
+    margin-right: 20px;
+}
+
+nav{
+    background-color: #23295A;
+    height: 100px;
+}
+
+.nav ul{
+    width: 1500px;
+    min-width: 600px;
+    height: 70px;
+}
+
+.nav a{
+    color: white;
+}
+
+.login{
+    text-align: right;
+    height: 20px;
+}
+
+.login span{
+    margin: 5px;
+    font-size: 10pt;
+}
+
+.line{
+    border: 0px;
+    border-top: 1px solid #141729;
+    margin: 5px 0px;
+}
+
+.nav_menu_item{
+    font-weight: bold;
+    font-size: 15pt;
+    text-align: center;
+    display: inline-block;
+    height: 50px;
+    line-height: 50px;
+    float: left;
+    margin: 10px 7.5%;
+}
+
+.float_clear{
+    clear: both;
+}
+
+article{
+    width: 1000px;
+    margin: 0 auto;
+}
+
+.intro_wrap{
+    display: flex;
+    flex-direction: column;
+    margin-top: 100px;
+    margin-bottom: 200px;
+}
+
+.intro_wrap span{
+    font-size: 15pt;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.intro_content{
+    height: 600px;
+    border-radius: 20px;
+    border: 2px solid #23295A;
+    padding: 20px;
+}
+
+.intro_content pre{
+    font-size: 12pt;
+    text-align: center;
+}

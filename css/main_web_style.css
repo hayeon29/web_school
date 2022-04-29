@@ -191,3 +191,8 @@
     font-size: 25pt;
     color: #FFC739;
 }
+
+.content_wrap{
+    width: 1500px;
+    margin: 0 auto;
+}

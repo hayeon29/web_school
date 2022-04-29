@@ -53,12 +53,16 @@ article{
 nav{
     background-color: #23295A;
     height: 100px;
+    
 }
 
 .nav ul{
     width: 1500px;
     min-width: 600px;
     height: 70px;
+    display: flex;
+    justify-content: space-around;
+    margin: 0 auto;
 }
 
 .nav a{

@@ -5,8 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/web_style.css">
-    <link rel="stylesheet" href="./css/calendar_web_style.css">
+    <link rel="stylesheet" href="./css/QnA_web_style.css">
     <script src = "./js/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript"src="./js/toggle.js"></script>
     <title>School</title>
 </head>
 <body>
@@ -26,32 +27,28 @@
         </div>
     </nav>
     <div class = "float_clear"></div>
-    <div class = "cal_wrap">
-        <div class = "cal">
-            <div class = "cal_nav">
-                <a href="javascript:;" class = "nav-btn go-prev">prev</a>
-                <div class = "year-month"></div>
-                <a href="javascript:;" class = "nav-btn go-next">next</a>
-            </div>
-            <div class = "cal_content">
-                <div class = "days">
-                    <div class = "day">월</div>
-                    <div class = "day">화</div>
-                    <div class = "day">수</div>
-                    <div class = "day">목</div>
-                    <div class = "day">금</div>
-                    <div class = "day">토</div>
-                    <div class = "day">일</div>
+    <article>
+        <span>QnA</span>
+        <div>
+            <div class = "qna_title">
+                <div>
+                    회원가입이 안 됩니다.
                 </div>
-                <div class = "dates"></div>
+                <img src = "./img/down.png" onclick = "toggle()">
+            </div>
+            <div class = "qna_content">
+                <pre>
+답변 드립니다.
+
+현재 회원가입 기능 구현 중에 있으며
+재학생, 신입생의 경우 학생 번호가 ID, 생일 앞자리 6자리를 비밀번호로 입력하시면 됩니다.
+감사합니다.
+                </pre>
             </div>
         </div>
-        <div class = "cal_discript_wrap">
-            <span>일정</span>
-            <div class = "cal_discript">
-            </div>
-        </div>
-    </div>
-    <script src="calendar.js"></script>
+    </article>
+
+    
+    
 </body>
 </html>

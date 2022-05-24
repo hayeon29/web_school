@@ -1,20 +1,22 @@
 #float_notice{
-    background-color: #DE7A7A;
+    background-color: #FF9090;
     border-radius: 20px;
-    margin: 10px 10px;
-    width: 1500px;
+    margin: 0 auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 1450px;
     height: 30px;
 }
 
 #float_notice span{
     width: 70px;
     float: left;
-    font-size: 10px;
+    font-size: 11px;
     color: white;
 }
 
 #float_notice MARQUEE{
-    width: 1410px;
+    width: 1360px;
     display: inline-block;
     color: white;
 }
@@ -47,9 +49,10 @@
     display: inline-block;
     margin: 20px 5px 0px 5px;
     border-radius: 20px;
+    border: 2px solid #FF9090;
     padding: 20px;
     box-sizing: border-box;
-    float: left;
+
 }
 
 .rec_wrap{
@@ -80,18 +83,18 @@
 }
 
 .notice{
-    background-color: #FFE0E0;
-    border-color: #DF8F8F;
+    background-color: #FFFFFF;
+    border-color: #FF9090;
 }
 
 .calendar{
-    background-color: #EA9B9B;
-    border-color: #BD5B5B;
+    background-color: #FFFFFF;
+    border-color: #FF9090;
 }
 
 .item{
-    background-color: #A94D4D;
-    border-color: #813838;
+    background-color: #FFFFFF;
+    border-color: #FF9090;
 }
 
 .plus_icon{
@@ -139,7 +142,7 @@
 
 .rec_item_descript{
     display: inline-block;
-    color: white;
+    color: #353535;
 }
 
 .rec_item_descript span{
@@ -160,7 +163,7 @@
     height: 450px;
     background-color: white;
     border-radius: 20px;
-    border: 1px solid #D06868;
+    border: 2px solid #FF9090;
     display: inline-block;
     padding: 20px;
     box-sizing: border-box;
@@ -169,6 +172,7 @@
 
 .rec_title_board{
     font-size: 17pt;
+    color: #552F2F;
 }
 
 .rec_board_line{
@@ -180,7 +184,7 @@
 .rec_qna{
     width: 400px;
     height: 450px;
-    background-color: #6980BC;
+    background-color: #FF7171;
     text-align: center;
     display: inline-block;
 }
@@ -189,7 +193,7 @@
     line-height: 450px;
     font-weight: bolder;
     font-size: 25pt;
-    color: #FFC739;
+    color: #ffe9e9;
 }
 
 .content_wrap{

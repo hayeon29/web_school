@@ -1,6 +1,6 @@
 @font-face {
-    font-family: 'SuncheonB';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2202-2@1.0/SuncheonB.woff') format('woff');
+    font-family: 'InfinitySans-RegularA1';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/InfinitySans-RegularA1.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
@@ -11,12 +11,12 @@ html{
 
 body{
     margin: 0 auto;
-    font-family: 'SuncheonB';
+    font-family: 'InfinitySans-RegularA1';
 }
 
 a{
     text-decoration: none;
-    color: black;
+    color: #353535;
 }
 
 
@@ -51,18 +51,20 @@ article{
 }
 
 nav{
-    background-color: #23295A;
-    height: 100px;
-    
+    background-color: #FF9090;
+    height: 26px;
 }
 
 .nav ul{
     width: 1500px;
     min-width: 600px;
-    height: 70px;
+    height: 40px;
+    border-radius: 20px;
     display: flex;
+    background-color: #FF9090;
     justify-content: space-around;
     margin: 0 auto;
+    margin-bottom: 20px;
 }
 
 .nav a{
@@ -81,19 +83,31 @@ nav{
 
 .line{
     border: 0px;
-    border-top: 1px solid #141729;
+    border-top: 1px solid #DE7A7A;
     margin: 5px 0px;
 }
 
 .nav_menu_item{
     font-weight: bold;
-    font-size: 15pt;
+    font-size: 12pt;
     text-align: center;
     display: inline-block;
-    height: 50px;
-    line-height: 50px;
-    float: left;
+    height: 20px;
+    line-height: 20px;
     margin: 10px 7.5%;
+}
+
+.content_logo{
+    height: 50px;
+    width: 240px;
+    margin: 0 auto;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+#logo{
+    height: 50px;
+    width: 240px;
 }
 
 .float_clear{

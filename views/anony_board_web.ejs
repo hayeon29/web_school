@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('layouts/header') -%>
+<link rel="stylesheet" href="/css/notice_web_style.css">
+<body>
+    <%- include('layouts/navbar') -%>
+    <article class = "notice_board" id = "anony">
+        <div class = "notice_title_board">
+            <span class = "bold title">익명 게시판</span>
+        </div>
+        <hr class = "notice_line" />
+        <table>
+            <tbody>
+                <% if(page * 6 > anonyboard.length) { %>
+                    <% for(var i = anonyboard.length - ((page - 1) * 6) - 1; i >= 0; i--){ %>
+                        <tr>
+                            <td class="notice_content notice_no"><%= anonyboard[i]._id %></td>
+                            <td class="notice_content notice_title"><a href="/anonyboard/content/<%= anonyboard[i]._id %>"><%= anonyboard[i].title %></a></td>
+                            <td class="notice_content notice_writer"><%= anonyboard[i].writer %></td>
+                            <td class="notice_content notice_date"><%= moment(anonyboard[i].date).format('YYYY-MM-DD') %></td>
+                            <td class="notice_content notice_hits"><%= anonyboard[i].hits %></td>
+                        </tr>
+                    <% } %>
+                <% } else { %>
+                    <% for(var i = anonyboard.length - ((page - 1) * 6) - 1; i >= anonyboard.length - (page * 6); i--){ %>
+                        <tr>
+                            <td class="notice_content notice_no"><%= anonyboard[i]._id %></td>
+                            <td class="notice_content notice_title"><a href="/anonyboard/content/<%= anonyboard[i]._id %>"><%= anonyboard[i].title %></a></td>
+                            <td class="notice_content notice_writer"><%= anonyboard[i].writer %></td>
+                            <td class="notice_content notice_date"><%= moment(anonyboard[i].date).format('YYYY-MM-DD') %></td>
+                            <td class="notice_content notice_hits"><%= anonyboard[i].hits %></td>
+                        </tr>
+                    <% } %>
+                <% } %>
+            </tbody>
+        </table>
+        <div class = "paging">
+            <% if(page == 1) { %>
+                <a class = "arrow" style = "cursor: default;"><img src = "/img/left_pink.png"></a>
+            <% } else { %>
+                <a href = "/anonyboard/pages/<%= page - 1 %>"class = "arrow"><img src = "/img/left_pink.png"></a>
+            <% }%>
+            <% if((parseInt(anonyboard.length / 6) + 1) - page <= 5) { %>
+                <% for(var i = parseInt(page / 5) * 5 + 1; i <= parseInt(anonyboard.length / 6) + 1; i++) { %>
+                    <a href = "/anonyboard/pages/<%= i %>" class = "view" value = "<%= i %>"><%= i %></a>
+                <% } %>
+            <% } else { %>
+                <% for(var i = parseInt(page / 5) * 5 + 1; i <= parseInt(page / 5) * 5 + 5; i++) { %>
+                    <a href = "/anonyboard/pages/<%= i %>" class = "view" value = "<%= i %>"><%= i %></a>
+                <% } %>
+            <% } %>
+            <% if(page * 6 > anonyboard.length) { %>
+                <a class = "arrow" style = "cursor: default;"><img src = "/img/right_pink.png"></a>
+            <% } else { %>
+                <a href = "/anonyboard/pages/<%= page + 1 %>" class = "arrow"><img src = "/img/right_pink.png"></a>
+            <% } %>
+        </div>
+        <div>
+            <button id="write" type="button" title="글쓰기" onclick="location.href='/anonyboard/write'">글쓰기</button>
+        </div>
+    </article>
+    <script>
+        console.log('page is <%= page %>');
+        paging('<%= page %>');
+    </script>
+</body>
+</html>

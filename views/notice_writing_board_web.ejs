@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('layouts/header') -%>
+<link rel="stylesheet" href="/css/writing_board_web_style.css">
+<body>
+    <%- include('layouts/navbar') -%>
+    <article>
+        <form action="/notice/write/post" method="POST">
+            <p class = "table_title">공지 사항</p>
+            <%- include('layouts/write') -%>
+        </form>
+    </article>
+</body>
+</html>

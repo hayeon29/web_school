@@ -1,0 +1,39 @@
+article{
+    width: 1000px;
+    margin: 0 auto;
+    margin-top: 100px;
+}
+
+article > span{
+    font-size: 15pt;
+    font-weight: bold;
+}
+
+.qna_title{
+    border-top: 2px solid #FF9090;
+    border-bottom: 2px solid #FF9090;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-top: 40px;
+}
+
+.qna_title > div{
+    line-height: 30px;
+    padding-left: 20px;
+    font-weight: bold;
+}
+
+.qna_title img{
+    width: 30px;
+    height: 30px;
+    padding-right: 20px;
+    cursor: pointer;
+}
+
+.qna_content{
+    padding: 20px;
+    background-color: #ececec;
+}

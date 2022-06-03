@@ -1,0 +1,17 @@
+<table class = "table_content">
+    <tr class = "md_row_10 table_content">
+        <td class = "table_td_one"><span class = "table_td_title">제목</span></td>
+        <td class = "table_td_two"><input type="text" placeholder="제목" name="title"/></td>
+    </tr>
+    <tr class = "md_row_10 table_content"> 
+        <td class = "table_td_one"><span class = "table_td_title">작성자</span></td>
+        <td class = "table_td_two"> <input type="text" placeholder="작성자" name="writer"/></td>
+    </tr>
+</table>
+<textarea id="editor" name="content"></textarea>
+<div>
+    <input type="submit" value="작성">
+</div>
+<script>
+    CKEDITOR.replace( 'editor' );
+</script>

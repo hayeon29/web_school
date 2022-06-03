@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('layouts/header') -%>
+<link rel="stylesheet" href="/css/QnA_web_style.css">
+<script src="/js/toggle.js"></script>
+<body>
+    <%- include('layouts/navbar') -%>
+    <article>
+        <span>QnA</span>
+        <div>
+            <div class = "qna_title">
+                <div>
+                    회원가입이 안 됩니다.
+                </div>
+                <img src = "./img/down.png" onclick = "toggle()">
+            </div>
+            <div class = "qna_content">
+                <pre>
+답변 드립니다.
+
+현재 회원가입 기능 구현 중에 있으며
+재학생, 신입생의 경우 학생 번호가 ID, 생일 앞자리 6자리를 비밀번호로 입력하시면 됩니다.
+감사합니다.
+                </pre>
+            </div>
+        </div>
+    </article>
+
+    
+    
+</body>
+</html>

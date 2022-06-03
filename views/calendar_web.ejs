@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('layouts/header') -%>
+<link rel="stylesheet" href="/css/calendar_web_style.css">
+<body>
+    <%- include('layouts/navbar') -%>
+    <div class = "cal_wrap">
+        <div class = "cal">
+            <div class = "cal_nav">
+                <a href="javascript:;" class = "nav-btn go-prev">prev</a>
+                <div class = "year-month"></div>
+                <a href="javascript:;" class = "nav-btn go-next">next</a>
+            </div>
+            <div class = "cal_content">
+                <div class = "days">
+                    <div class = "day">월</div>
+                    <div class = "day">화</div>
+                    <div class = "day">수</div>
+                    <div class = "day">목</div>
+                    <div class = "day">금</div>
+                    <div class = "day">토</div>
+                    <div class = "day">일</div>
+                </div>
+                <div class = "dates"></div>
+            </div>
+        </div>
+        <div class = "cal_discript_wrap">
+            <span>일정</span>
+            <div class = "cal_discript">
+            </div>
+        </div>
+    </div>
+    <script src="./js/calendar.js"></script>
+</body>
+</html>

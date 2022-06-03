@@ -1,0 +1,82 @@
+.signup_content{
+    width: 1400px;
+    margin: 0 auto;
+}
+
+.margin_bottom{
+    margin-bottom: 30px;
+}
+
+#content_title{
+    font-weight: bold;
+    font-size: 16pt;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+table{
+    border-collapse: collapse;
+}
+
+td:nth-child(odd){
+    width: 200px;
+    background-color: #FF8080;
+    color: white;
+    border: 1px solid #FF5050;
+    padding: 15px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+td:nth-child(even){
+    width: 1200px;
+    padding-left: 10px;
+    border-top: 1px solid #FF9090;
+    border-bottom: 1px solid #FF9090;
+}
+
+input{
+    background-color: #F6F6F6;
+    border: 1px solid #B0B0B0;
+}
+
+input[type="text"]{
+    width: 200px;
+    height: 30px;
+}
+
+input[type="password"]{
+    width: 200px;
+    height: 30px;
+}
+
+input[type="email"]{
+    width: 300px;
+    height: 30px;
+}
+
+#chk_overlap{
+    margin-left: 30px;
+    width: 150px;
+    height: 35px;
+    border-radius: 5px;
+    background-color: #FF8080;
+    color: white;
+    border: 1px solid #FF6060;
+}
+
+.margin_top{
+    margin-top: 30px;
+}
+
+#signup{
+    float: right;
+    color: white;
+    background-color: #FF8080;
+    width: 150px;
+    height: 50px;
+    border: 1px solid #FF5050;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+}

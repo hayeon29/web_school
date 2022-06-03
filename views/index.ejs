@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('layouts/header') -%>
+<link rel="stylesheet" href="/css/main_web_style.css">
+<script src="/js/meal.js"></script>
+<body>
+    <%- include('layouts/navbar') -%>
+    <div class = "content_wrap">
+        <p id = "float_notice">
+            <span class = "float left_margin">학교 급훈</span>
+            <MARQUEE class = "float right_margin">슬기로운 생활, 탐구하는 태도, 봉사하는 생활</MARQUEE>
+        </p>
+        <div class = "rec_wrap">
+            <div class = "round_rectangle notice">
+                <div class = "rec_title_wrap">
+                    <span class = "rec_title">공지사항</span>
+                    <a href="/notice/pages/1" class = "plus_icon"><img src = "./img/plus.png" class = "plus_icon"></a>
+                </div>
+                <hr class = "line rec_line notice"/>
+                <div class = "rec_content">
+                    <ol>
+                        <% if(notices.length <= 9) { %>
+                            <% for(var i = notices.length - 1; i >= 0; i--) { %> 
+                                <li class = "board_title"><a href = "/notice/content/<%= notices[i]._id %>" class = "board_text"><%= notices[i].title %></a></li>
+                            <% } %>
+                        <% } else { %>
+                            <% for(var i = notices.length - 1; i >= notices.length - 9; i--) { %> 
+                                <li class = "board_title"><a href = "/notice/content/<%= notices[i]._id %>" class = "board_text"><%= notices[i].title %></a></li>
+                            <% } %>
+                        <% } %>
+                    </ol>
+                </div>
+            </div>
+            <div class = "round_rectangle calendar">
+                <div class = "rec_title_wrap">
+                    <span class = "rec_title">학사일정</span>
+                    <a href="/calendar" class = "plus_icon"><img src = "/img/plus.png" class = "plus_icon"></a>
+                </div>
+                <hr class = "line rec_line calendar"/>
+                <div class = "rec_content">
+                    <li class = "board_title">
+                        <span class = "bold board_text">4/2</span>
+                        <span class = "board_date_content board_text left_margin">토요휴업일</span>
+                    </li>
+                    <li class = "board_title">
+                        <span class = "bold board_text">4/12</span>
+                        <span class = "board_date_content board_text left_margin">영어듣기평가(1학년)</span>
+                    </li>
+                    <li class = "board_title">
+                        <span class = "bold board_text">4/13</span>
+                        <span class = "board_date_content board_text left_margin">영어듣기평가(2학년)</span>
+                    </li>
+                    <li class = "board_title">
+                        <span class = "bold board_text">4/14</span>
+                        <span class = "board_date_content board_text left_margin">영어듣기평가(3학년)</span>
+                    </li>
+                    <li class = "board_title">
+                        <span class = "bold board_text">4/26</span>
+                        <span class = "board_date_content board_text left_margin">중간고사</span>
+                    </li>
+                    <li class = "board_title">
+                        <span class = "bold board_text">4/27</span>
+                        <span class = "board_date_content board_text left_margin">중간고사</span>
+                    </li>
+                </div>
+            </div>
+            <div class = "round_rectangle item">
+                <div class = "rec_title_wrap">
+                    <span class = "rec_title">오늘의 급식</span>
+                    <a href="#" class = "plus_icon"><img src = "/img/plus.png" class = "plus_icon"></a>
+                </div>
+                <hr class = "line rec_line item"/>
+                <div class = "rec_content rec_item">
+                    <a id="prevmeal" style="cursor: pointer"><img class = "arrow_img left" src = "/img/left.png"></a>
+                    <img class = "item_img" src = "/img/carrot.png">
+                    <div class = "rec_item_descript">
+                        <div>
+                            <div class = "meal cur" value="1">
+                                <span class = "bold">4/28(목) 조식</span>
+                                <hr style="visibility: hidden;"/>
+                                <ol class="breakfast">
+                                    <li>흑미밥</li>
+                                    <li>육개장</li>
+                                    <li>함박스테이크</li>
+                                    <li>순대야채볶음</li>
+                                    <li>마파두부</li>
+                                </ol>
+                            </div>
+                            <div class = "hidden meal"  value="2">
+                                <span class = "bold">4/28(목) 중식</span>
+                                <hr style="visibility: hidden;"/>
+                                <ol class="lunch">
+                                    <li>쌀밥</li>
+                                    <li>비엔나파스타칠리볶음</li>
+                                    <li>매콤목살묵은지찜</li>
+                                    <li>콩나물무침</li>
+                                    <li>건새우꽈리고추볶음</li>
+                                </ol>
+                            </div>
+                            <div class = "hidden meal"  value="3">
+                                <span class = "bold">4/28(목) 석식</span>
+                                <hr style="visibility: hidden;"/>
+                                <ol class="dinner">
+                                    <li>참치야채비빔밥</li>
+                                    <li>들깨무채국</li>
+                                    <li>매콤해물볶음우동</li>
+                                    <li>땅땅불갈비치킨</li>
+                                    <li>파인애플</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                    <a id="nextmeal" style="cursor: pointer"><img class = "arrow_img right" src = "/img/right.png"></a>
+                </div>
+            </div>
+        </div>
+        <div class = "float_clear"></div>
+        <div class = "rec_wrap" style="margin-top: 40px;">
+            <a class="twitter-timeline" data-width="350" data-height="450" href="https://twitter.com/shima_hanasaki?ref_src=twsrc%5Etfw">
+                Tweets by shima_hanasaki
+            </a> 
+            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            <div class = "round_rectangle_board">
+                <div class = "rec_title_wrap">
+                    <span class = "rec_title_board right_margin">익명 게시판</span>
+                    <a href="/anonyboard/pages/1" class = "plus_icon left_margin"><img src = "/img/plus.png" class = "plus_icon"></a>
+                </div>
+                <hr class = "rec_board_line"/>
+                <div class = "rec_content" style = "margin-top: 30px;">
+                    <ol>
+                        <% if(anonyboards.length <= 9) { %>
+                            <% for(var i = anonyboards.length - 1; i >= 0; i--) { %> 
+                                <li class = "board_title"><a href = "/anonyboard/content/<%= anonyboards[i]._id %>" class = "board_text"><%= anonyboards[i].title %></a></li>
+                            <% } %>
+                        <% } else { %>
+                            <% for(var i = anonyboards.length - 1; i >= anonyboards.length - 9; i--) { %> 
+                                <li class = "board_title"><a href = "/anonyboard/content/<%= anonyboards[i]._id %>" class = "board_text"><%= anonyboards[i].title %></a></li>
+                            <% } %>
+                        <% } %>
+                    </ol>
+                </div>
+            </div>
+            <a href="/qna">
+                <div class = "rec_qna">
+                    <span>Q&A</span>
+                </div>
+            </a>
+        </div>
+    </div>
+</body>
+</html>

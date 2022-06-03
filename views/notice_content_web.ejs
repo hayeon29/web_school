@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('layouts/header') -%>
+<link rel="stylesheet" href="/css/content_web_style.css">
+<body>
+    <%- include('layouts/navbar') -%>
+    <article>
+        <div class = "content_wrap">
+            <div class = "title_wrap">
+                <div class = "content_title bold"><%= notice.title %></div>
+            </div>
+            <div class = "name_date_wrap">
+                <span class = "contents_bold content_name bold">작성자</span>
+                <span class = "contents content_name"><%= notice.writer %></span>
+                <span class = "contents_bold content_date bold"></span>
+                <span class = "contents content_date"><%= moment(notice.date).format('YYYY-MM-DD') %></span>
+                <span class = "contents_bold content_watch bold">조회수</span>
+                <span class = "contents content_watch"><%= notice.hits %></span>
+            </div>
+            <div class = "content_content">
+                <%= notice.content %>
+            </div>
+        </div>
+    </article>
+</body>
+</html>

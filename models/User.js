@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
-const UserSchema = new Schema({
+module.exports = new Schema({
     //_id는 자동으로 생성 
     id: {
         type: String,
@@ -10,6 +10,3 @@ const UserSchema = new Schema({
     password: String,
     email: String,
 })
-
-const User = mongoose.model('User', UserSchema)
-module.exports = User

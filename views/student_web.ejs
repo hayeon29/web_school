@@ -7,11 +7,13 @@
     <article>
         <div class = "bold member">구성원</div>
         <div class = "members_wrap">
-            <div class = "member_wrap">
-                <div class = "member member_img">이미지</div>
-                <div class = "member member_name">이름</div>
-                <div class = "member member_sub">직책</div>
-            </div>
+            <% for(var i = 0; i < members.length; i++) { %>
+                <div class = "member_wrap">
+                    <img class = "member member_img" src="<%= members[i].image %>">
+                    <div class = "member member_name"><%= members[i].name %></div>
+                    <div class = "member member_sub"><%= members[i].position %></div>
+                </div>
+            <% } %>
         </div>
     </article>
 </body>

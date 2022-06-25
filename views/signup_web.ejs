@@ -4,31 +4,30 @@
 <link rel="stylesheet" href="/css/signup_web_style.css">
 <body>
     <%- include('layouts/navbar') -%>
-    <form action = "/signup/result" method="POST">
-        <div class = "signup_content margin_bottom">
-            <span id = "content_title">회원가입</span>
-            <table class = "signup_content">
-                <tr>
-                    <td>아이디</td>
-                    <td><input name="id" type="text"/><button id = "chk_overlap">중복 확인</button></td>
-                </tr>
-                <tr>
-                    <td>비밀번호</td>
-                    <td><input name="password" type="password"/></td>
-                </tr>
-                <tr>
-                    <td>비밀번호 확인</td>
-                    <td><input name="password_chk" type="password"/></td>
-                </tr>
-                <tr>
-                    <td>이메일</td>
-                    <td><input name="email" type="email"/></td>
-                </tr>
-            </table>
-            <div class = "margin_top">
-                <input id="signup" type="submit" title="회원가입" value="회원가입"></input>
-            </div>
+    <div class = "signup_content margin_bottom">
+        <span id = "content_title">회원가입</span>
+        <table class = "signup_content">
+            <tr>
+                <td>아이디</td>
+                <td><input id="id" name="id" type="text"/><button id = "chk_overlap" class="button">중복 확인</button><span name="check_result"></span></td>
+            </tr>
+            <tr>
+                <td>비밀번호</td>
+                <td><input id="password" name="password" type="password"/></td>
+            </tr>
+            <tr>
+                <td>비밀번호 확인</td>
+                <td><input id="password_chk" name="password_chk" type="password"/><span name="check_result"></span></td>
+            </tr>
+            <tr>
+                <td>이메일</td>
+                <td><input id="email" name="email" type="email"/></td>
+            </tr>
+        </table>
+        <div class = "margin_top">
+            <input id="signup" class="button" type="submit" title="회원가입" value="회원가입" onclick=""></input>
         </div>
-    </form>
+    </div>
+    <script src="./js/signup_event.js"></script>
 </body>
 </html>

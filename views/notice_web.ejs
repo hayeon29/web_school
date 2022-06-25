@@ -14,7 +14,7 @@
                 <% if(page * 6 > notice.length) { %>
                     <% for(var i = notice.length - ((page - 1) * 6) - 1; i >= 0; i--){ %>
                         <tr>
-                            <td class="notice_content notice_no"><%= notice[i]._id %></td>
+                            <td class="notice_content notice_no"><%= notice[i].id %></td>
                             <td class="notice_content notice_title"><a href="/notice/content/<%= notice[i]._id %>"><%= notice[i].title %></a></td>
                             <td class="notice_content notice_writer"><%= notice[i].writer %></td>
                             <td class="notice_content notice_date"><%= moment(notice[i].date).format('YYYY-MM-DD') %></td>
@@ -24,7 +24,7 @@
                 <% } else { %>
                     <% for(var i = notice.length - ((page - 1) * 6) - 1; i >= notice.length - (page * 6); i--){ %>
                         <tr>
-                            <td class="notice_content notice_no"><%= notice[i]._id %></td>
+                            <td class="notice_content notice_no"><%= notice[i].id %></td>
                             <td class="notice_content notice_title"><a href="/notice/content/<%= notice[i]._id %>"><%= notice[i].title %></a></td>
                             <td class="notice_content notice_writer"><%= notice[i].writer %></td>
                             <td class="notice_content notice_date"><%= moment(notice[i].date).format('YYYY-MM-DD') %></td>
@@ -56,7 +56,9 @@
             <% } %>
         </div>
         <div>
-            <button id="write" type="button" title="글쓰기" onclick="location.href='/notice/write'">글쓰기</button>
+            <% if(is_login) { %>
+                <button id="write" type="button" title="글쓰기" onclick="location.href='/notice/write'">글쓰기</button>
+            <% } %>
         </div>
     </article>
     <script>

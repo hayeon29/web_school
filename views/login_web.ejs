@@ -5,13 +5,15 @@
 <body>
     <%- include('layouts/navbar') -%>
     <div class = "login_wrap_wrap">
-        <div class = "login_wrap">
-            <span>LOGIN</span>
-            <input type = "text" id = "login_ID" placeholder="아이디">
-            <input type = "password" id = "login_PWD" placeholder="비밀번호">
-            <button>로그인</button>
-            <span class = "signIN"><a href="/signup">회원가입</a></span>
-        </div>
+        <form action="/login/result" method="POST">
+            <div class = "login_wrap">
+                <span>LOGIN</span>
+                <input type = "text" id = "login_ID" placeholder="아이디" name="id">
+                <input type = "password" id = "login_PWD" placeholder="비밀번호" name="password">
+                <input type = "submit" value="로그인"></button>
+                <span class = "signIN"><a href="/signup">회원가입</a></span>
+            </div>
+        </form>
     </div>
 </body>
 </html>

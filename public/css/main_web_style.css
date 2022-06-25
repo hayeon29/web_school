@@ -129,6 +129,16 @@
     width: 70px;
     height: 70px;
     vertical-align: middle;
+    float: left;
+}
+
+.meal.cur{
+    display: flex;
+    align-items: center;
+}
+
+.meal_cur_menu{
+    margin-left: 25px;
 }
 
 .rec_item{

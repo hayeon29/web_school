@@ -26,7 +26,13 @@
         </div>
         <div class = "cal_discript_wrap">
             <span>일정</span>
-            <div class = "cal_discript">
+            <div id = "cal_discript" class = "cal_discript" year= "<%= moment(calendars[0].date).format('YYYY') %>" month= "<%= moment(calendars[0].date).format('M') %>">
+                <% for(var i = 0; i < calendars.length; i++) { %>
+                    <li class = "cal_title">
+                        <span class = "bold cal_text"><%= moment(calendars[i].date).format('MM-DD') %></span>
+                        <span class = "cal_date_content cal_text left_margin"><%= calendars[i].content %></span>
+                    </li>
+                <% } %>
             </div>
         </div>
     </div>

@@ -14,7 +14,7 @@
                 <% if(page * 6 > anonyboard.length) { %>
                     <% for(var i = anonyboard.length - ((page - 1) * 6) - 1; i >= 0; i--){ %>
                         <tr>
-                            <td class="notice_content notice_no"><%= anonyboard[i]._id %></td>
+                            <td class="notice_content notice_no"><%= anonyboard[i].id %></td>
                             <td class="notice_content notice_title"><a href="/anonyboard/content/<%= anonyboard[i]._id %>"><%= anonyboard[i].title %></a></td>
                             <td class="notice_content notice_writer"><%= anonyboard[i].writer %></td>
                             <td class="notice_content notice_date"><%= moment(anonyboard[i].date).format('YYYY-MM-DD') %></td>
@@ -24,7 +24,7 @@
                 <% } else { %>
                     <% for(var i = anonyboard.length - ((page - 1) * 6) - 1; i >= anonyboard.length - (page * 6); i--){ %>
                         <tr>
-                            <td class="notice_content notice_no"><%= anonyboard[i]._id %></td>
+                            <td class="notice_content notice_no"><%= anonyboard[i].id %></td>
                             <td class="notice_content notice_title"><a href="/anonyboard/content/<%= anonyboard[i]._id %>"><%= anonyboard[i].title %></a></td>
                             <td class="notice_content notice_writer"><%= anonyboard[i].writer %></td>
                             <td class="notice_content notice_date"><%= moment(anonyboard[i].date).format('YYYY-MM-DD') %></td>
@@ -56,7 +56,9 @@
             <% } %>
         </div>
         <div>
-            <button id="write" type="button" title="글쓰기" onclick="location.href='/anonyboard/write'">글쓰기</button>
+            <% if(is_login) { %>
+                <button id="write" type="button" title="글쓰기" onclick="location.href='/anonyboard/write'">글쓰기</button>
+            <% } %>
         </div>
     </article>
     <script>

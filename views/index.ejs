@@ -2,7 +2,6 @@
 <html lang="en">
 <%- include('layouts/header') -%>
 <link rel="stylesheet" href="/css/main_web_style.css">
-<script src="/js/meal.js"></script>
 <body>
     <%- include('layouts/navbar') -%>
     <div class = "content_wrap">
@@ -38,30 +37,12 @@
                 </div>
                 <hr class = "line rec_line calendar"/>
                 <div class = "rec_content">
-                    <li class = "board_title">
-                        <span class = "bold board_text">4/2</span>
-                        <span class = "board_date_content board_text left_margin">토요휴업일</span>
-                    </li>
-                    <li class = "board_title">
-                        <span class = "bold board_text">4/12</span>
-                        <span class = "board_date_content board_text left_margin">영어듣기평가(1학년)</span>
-                    </li>
-                    <li class = "board_title">
-                        <span class = "bold board_text">4/13</span>
-                        <span class = "board_date_content board_text left_margin">영어듣기평가(2학년)</span>
-                    </li>
-                    <li class = "board_title">
-                        <span class = "bold board_text">4/14</span>
-                        <span class = "board_date_content board_text left_margin">영어듣기평가(3학년)</span>
-                    </li>
-                    <li class = "board_title">
-                        <span class = "bold board_text">4/26</span>
-                        <span class = "board_date_content board_text left_margin">중간고사</span>
-                    </li>
-                    <li class = "board_title">
-                        <span class = "bold board_text">4/27</span>
-                        <span class = "board_date_content board_text left_margin">중간고사</span>
-                    </li>
+                    <% for(var i = 0; i < calendars.length; i++) { %>
+                        <li class = "board_title">
+                            <span class = "bold board_text"><%= moment(calendars[i].date).format('MM-DD') %></span>
+                            <span class = "board_date_content board_text left_margin"><%= calendars[i].content %></span>
+                        </li>
+                    <% } %>
                 </div>
             </div>
             <div class = "round_rectangle item">
@@ -70,43 +51,45 @@
                     <a href="#" class = "plus_icon"><img src = "/img/plus.png" class = "plus_icon"></a>
                 </div>
                 <hr class = "line rec_line item"/>
-                <div class = "rec_content rec_item">
+                <div class = "rec_content rec_item" date = "<%= moment(schoolmeals[0].date).format('YYYY-MM-DD') %>">
                     <a id="prevmeal" style="cursor: pointer"><img class = "arrow_img left" src = "/img/left.png"></a>
-                    <img class = "item_img" src = "/img/carrot.png">
-                    <div class = "rec_item_descript">
+                    <div id = "rec_item_descript" class = "rec_item_descript">
                         <div>
                             <div class = "meal cur" value="1">
-                                <span class = "bold">4/28(목) 조식</span>
-                                <hr style="visibility: hidden;"/>
-                                <ol class="breakfast">
-                                    <li>흑미밥</li>
-                                    <li>육개장</li>
-                                    <li>함박스테이크</li>
-                                    <li>순대야채볶음</li>
-                                    <li>마파두부</li>
-                                </ol>
+                                <img class = "item_img" src = "<%= schoolmeals[0].image %>">
+                                <div class = "meal_cur_menu">
+                                    <span class = "bold"><%= moment(schoolmeals[0].date).format('MM/DD(dddd)')%> <%= schoolmeals[0].value %></span>
+                                    <hr style="visibility: hidden;"/>
+                                    <ol class="breakfast">
+                                        <% for(var i = 0; i < schoolmeals[0].meal.length; i++) { %>
+                                            <li><%= schoolmeals[0].meal[i] %></li>
+                                        <% } %>
+                                    </ol>
+                                </div>
                             </div>
                             <div class = "hidden meal"  value="2">
-                                <span class = "bold">4/28(목) 중식</span>
-                                <hr style="visibility: hidden;"/>
-                                <ol class="lunch">
-                                    <li>쌀밥</li>
-                                    <li>비엔나파스타칠리볶음</li>
-                                    <li>매콤목살묵은지찜</li>
-                                    <li>콩나물무침</li>
-                                    <li>건새우꽈리고추볶음</li>
-                                </ol>
+                                <img class = "item_img" src = "<%= schoolmeals[1].image %>">
+                                <div class = "meal_cur_menu">
+                                    <span class = "bold"><%= moment(schoolmeals[1].date).format('MM/DD(dddd)')%> <%= schoolmeals[1].value %></span>
+                                    <hr style="visibility: hidden;"/>
+                                    <ol class="lunch">
+                                        <% for(var i = 0; i < schoolmeals[1].meal.length; i++) { %>
+                                            <li><%= schoolmeals[1].meal[i] %></li>
+                                        <% } %>
+                                    </ol>
+                                </div>
                             </div>
                             <div class = "hidden meal"  value="3">
-                                <span class = "bold">4/28(목) 석식</span>
-                                <hr style="visibility: hidden;"/>
-                                <ol class="dinner">
-                                    <li>참치야채비빔밥</li>
-                                    <li>들깨무채국</li>
-                                    <li>매콤해물볶음우동</li>
-                                    <li>땅땅불갈비치킨</li>
-                                    <li>파인애플</li>
-                                </ol>
+                                <img class = "item_img" src = "<%= schoolmeals[2].image %>">
+                                <div class = "meal_cur_menu">
+                                    <span class = "bold"><%= moment(schoolmeals[2].date).format('MM/DD(dddd)')%> <%= schoolmeals[2].value %></span>
+                                    <hr style="visibility: hidden;"/>
+                                    <ol class="dinner">
+                                        <% for(var i = 0; i < schoolmeals[2].meal.length; i++) { %>
+                                            <li><%= schoolmeals[2].meal[i] %></li>
+                                        <% } %>
+                                    </ol>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -147,5 +130,6 @@
             </a>
         </div>
     </div>
+    <script src="./js/meal.js"></script>
 </body>
 </html>

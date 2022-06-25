@@ -1,207 +1,116 @@
 const express = require('express')
-const path = require('path')
-const ejs = require('ejs')
 const mongoose = require('mongoose')
 const autoIncrement = require('mongoose-auto-increment')
 const bodyParser = require('body-parser')
 const app = express()
-const Schema = mongoose.Schema
-const bcrypt = require('bcrypt')
-const moment = require('moment')
+const cors = require('cors')
+const express_session = require('express-session')
+
+const homeController = require('./controllers/home')
+const introduceController = require('./controllers/introduce')
+const loginController = require('./controllers/login')
+const qnaController = require('./controllers/qna')
+const getAnonyContentController = require('./controllers/getAnonyContent')
+const getAnonyController = require('./controllers/getAnony')
+const getNoticeContorller = require('./controllers/getNotice')
+const getNoticeContentController = require('./controllers/getNoticeContent')
+const studentController = require('./controllers/student')
+const calendarController = require('./controllers/calendar')
+const logoutController = require('./controllers/logout')
+const writeAnonyController = require('./controllers/writeAnony')
+const writeNoticeController = require('./controllers/writeNotice')
+const signupController = require('./controllers/signup')
+const getDateController = require('./controllers/getDate')
+const getMealDateController = require('./controllers/getMealDate')
+const sendNoticeController = require('./controllers/sendNotice')
+const sendAnonyController = require('./controllers/sendAnony')
+const loginResultController = require('./controllers/loginResult')
+const signupResultController = require('./controllers/signupResult')
+const checkIDController = require('./controllers/checkID')
+
+const corsOptions = {
+    origin: 'http://localhost:4000/',
+}
+
+global.is_login = null
 
 app.set('views', __dirname + '/views')
 app.set('view engine', 'ejs')
 app.use(express.static('public'))
 app.use(bodyParser.urlencoded({extended : true}));
 app.use(bodyParser.json());
+app.use(cors(corsOptions))
+app.use(express_session({
+    secret: 'hanasaki web project'
+}))
+app.use("*", (req, res, next) => {
+    is_login = req.session.user
+    next()
+})
 
-const User = require('./models/User')
-const { text } = require('body-parser')
+
+const NoticeSchema = require('./models/Notice')
+const AnonyBoardSchema = require('./models/AnonyBoard')
 
 var connection = mongoose.createConnection('mongodb://localhost/schoolDB')
 
 autoIncrement.initialize(connection)
-
-const NoticeSchema = new Schema({
-    title: String,
-    writer: String,
-    date: {
-        type: Date,
-        default: new Date()
-    },
-    hits: {
-        type: Number,
-        default: 0
-    },
-    content: String
-})
 
 NoticeSchema.plugin(autoIncrement.plugin, {
     model: 'Notice',
     field: 'id',
     startAt: 1,
     increment: 1,
+}) 
+
+AnonyBoardSchema.plugin(autoIncrement.plugin, {
+    model: 'AnonyBoard',
+    field: 'id',
+    startAt: 1,
+    increment: 1,
 })
 
-const AnonyBoardSchema = new Schema({
-    title: String,
-    writer: String,
-    date: {
-        type: Date,
-        default: new Date()
-    },
-    hits: {
-        type: Number,
-        default: 0
-    },
-    content: String
-})
+app.get('/', homeController)
 
-AnonyBoardSchema.plugin(autoIncrement.plugin, 'AnonyBoard')
+app.get('/introduce', introduceController)
 
-const Notice = connection.model('Notice', NoticeSchema)
-const AnonyBoard = connection.model('AnonyBoard', AnonyBoardSchema)
+app.get('/login', loginController)
 
-app.get('/', async(req, res)=>{
-    const notices = await Notice.find({});
-    const anonyboards = await AnonyBoard.find({});
-    res.render('index', {
-        notices: notices,
-        anonyboards: anonyboards
-    });
-})
+app.get('/qna', qnaController)
 
-app.get('/introduce', (req, res)=>{
-    res.render('introduce_web');
-})
+app.get('/anonyboard/content/:id', getAnonyContentController)
 
-app.get('/login', (req, res)=>{
-    res.render('login_web');
-})
+app.get('/anonyboard/pages/:page', getAnonyController)
 
-app.get('/qna', (req, res)=>{
-    res.render('QnA_web');
-})
+app.get('/notice/pages/:page', getNoticeContorller)
 
-app.get('/anonyboard/content/:id', (req, res)=>{
-    AnonyBoard.findById({_id: req.params.id}, function(err, data){
-        if(err){
-            return res.json(err)
-        }
-        var text = data.content.replace(/<br\/>/ig, "\n");
-        text = text.replace(/<(\/)?([a-zA-Z]*)(\s[a-zA-Z]*=[^>]*)?(\s)*(\/)?>/ig, "");
+app.get('/notice/content/:id', getNoticeContentController)
 
+app.get('/student', studentController)
 
-        text = text.replace(/(<([^>]+)>)/gi, "");
-        text = text.replace(/&nbsp;/gi,"");
-        return res.render('anony_content_web.ejs', {
-            anonyboard: data,
-            content: text,
-            moment
-        })
-    })
-})
+app.get('/calendar', calendarController)
 
-app.get('/anonyboard/pages/:page', (req, res) => {
-    AnonyBoard.find({}, function(err, data){
-        if(err){
-            return res.json(err)
-        }
-        return res.render('anony_board_web.ejs', {
-            page: Number(req.params.page),
-            anonyboard: data,
-            moment
-        })
-    })
-})
+app.get('/logout', logoutController)
 
-app.get('/notice/pages/:page', (req, res)=>{
-    Notice.find({}, function(err, data){
-        if(err){
-            return res.json(err)
-        }
-        console.log('page = ' + req.params.page)
-        console.log('length = ' + data.length)
-        return res.render('notice_web.ejs', {
-            page: Number(req.params.page),
-            notice: data,
-            moment
-        })
-    })
-})
+app.get('/anonyboard/write', writeAnonyController)
 
-app.get('/notice/content/:id', (req, res)=>{
-    Notice.findById({_id: req.params.id}, function(err, data){
-        if(err){
-            return res.json(err)
-        }
-        return res.render('notice_content_web.ejs', {
-            notice: data,
-            moment
-        })
-    })
-})
+app.get('/notice/write', writeNoticeController)
 
-app.get('/student', (req, res)=>{
-    res.render('student_web')
-})
+app.get('/signup', signupController)
 
-app.get('/calendar', (req, res)=>{
-    res.render('calendar_web')
-})
+app.post('/get-date', getDateController)
 
-app.get('/login', (req, res)=>{
-    res.render('login_web')
-})
+app.post('/get-meal-date', getMealDateController)
 
-app.get('/anonyboard/write', (req, res)=>{
-    res.render('anony_writing_board_web')
-})
+app.post('/notice/write/post', sendNoticeController)
 
-app.get('/notice/write', (req, res)=>{
-    res.render('notice_writing_board_web')
-})
+app.post('/anonyboard/write/post', sendAnonyController)
 
-app.get('/signup', (req, res)=>{
-    res.render('signup_web')
-})
+app.post('/login/result', loginResultController)
 
-app.post('/notice/write/post', (req, res) => {
-    const notice = new Notice()
-    notice.title = req.body.title
-    notice.writer = req.body.writer
-    notice.content = req.body.content
-    notice
-        .save()
-    res.redirect('/notice')
-})
+app.post('/signup/result', signupResultController)
 
-app.post('/anonyboard/write/post', (req, res) => {
-    const anonyboard = new AnonyBoard()
-    anonyboard.title = req.body.title
-    anonyboard.writer = req.body.writer
-    anonyboard.content = req.body.content
-    console.log(req.body)
-    anonyboard
-        .save()
-    res.redirect('/anonyboard/pages/1')
-})
-
-app.post('/signup/result', (req, res) => {
-    bcrypt.hash(req.body.password, 10, (err, encryptedPassowrd) => {
-		// async callback
-		const one = {
-			id: req.body.id,
-            password: encryptedPassowrd,
-			email: req.body.email,
-		};
-		const newUser = new User(one);
-		newUser
-			.save()
-			.then(() => res.json("Sign Up Successed"))
-			.catch((err) => res.status(400).json("Error: " + err))
-	})
-})
+app.post('/check-id', checkIDController)
 
 app.listen(4000, function(){
     console.log("App listening on port 4000...")

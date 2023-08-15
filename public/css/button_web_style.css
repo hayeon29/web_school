@@ -1,0 +1,28 @@
+.default_button{
+    border: none;
+    border-radius: 5px;
+    height: 32px;
+    padding: 0px 16px;
+    margin-right: 16px;
+    background-color: #000000;
+    color: white;
+}
+
+.large_button{
+    height: 48px;
+    padding: 0px 32px;
+    margin: 16px 8px;
+    background-color: #000000;
+    border: 1px solid #000000;
+    border-radius: 10px;
+    color: white;
+    float: right;
+}
+
+.large_button:first-child{
+    margin-left: 0px;
+}
+
+.large_button:last-child{
+    margin-right: 0px;
+}

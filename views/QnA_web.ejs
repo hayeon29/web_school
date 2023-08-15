@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('layouts/header') -%>
+<link rel="stylesheet" href="/css/QnA_web_style.css">
+<link rel="stylesheet" href="/css/menu_web_style.css">
+<body>
+    <%- include('layouts/navbar') -%>
+    <div class = "hero_banner">
+
+    </div>
+    <article class = "specific_page_container">
+        <div class = "lnb_container">
+            <nav class = "lnb_container_nav">
+                <div class = "nav_header">
+                    <span>
+                        커뮤니티
+                    </span>
+                </div>
+                <ol class = "nav_container">
+                    <li><a href = "/anonymous-post?page=1"><span>익명 게시판</span></a></li>
+                    <li><a href = "/qna"><span>Q&A</span></a></li>
+                </ol>
+            </nav>
+        </div>
+        <div class="question_container">
+            <h1 class="question_container_title">질문과 답변</h1>
+            <div class="question_content">
+                <li class="question_individual">
+                    <div class="question_individual_data">
+                        <div class="question_individual_content">
+                            <i class="question_icon"></i>
+                            <span>질문</span>
+                        </div>
+                        <button class="question_individual_slide" value = "1">slide down</button>
+                        <div class = "answer_individual_content" value = "1">
+                            <i class = "check_icon"></i>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vel leo id tortor hendrerit elementum aliquam ac massa. Phasellus vehicula enim a fermentum elementum. Duis viverra mollis libero, eget imperdiet sapien aliquam quis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Morbi quis est risus. Vestibulum consequat eros magna, sed lobortis nulla iaculis et. Aliquam a ante nec urna feugiat venenatis et in dui. Proin mollis nisi at hendrerit iaculis. Vestibulum scelerisque nisi non erat hendrerit rhoncus. Sed pellentesque erat sit amet vehicula laoreet.</p>
+                        </div>
+                    </div>
+                </li>
+                <li class="question_individual">
+                    <div class="question_individual_data">
+                        <div class="question_individual_content">
+                            <i class="question_icon"></i>
+                            <span>질문</span>
+                        </div>
+                        <button class="question_individual_slide" value = "2">slide down</button>
+                        <div class = "answer_individual_content" value = "2">
+                            <i class = "check_icon"></i>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vel leo id tortor hendrerit elementum aliquam ac massa. Phasellus vehicula enim a fermentum elementum. Duis viverra mollis libero, eget imperdiet sapien aliquam quis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Morbi quis est risus. Vestibulum consequat eros magna, sed lobortis nulla iaculis et. Aliquam a ante nec urna feugiat venenatis et in dui. Proin mollis nisi at hendrerit iaculis. Vestibulum scelerisque nisi non erat hendrerit rhoncus. Sed pellentesque erat sit amet vehicula laoreet.</p>
+                        </div>
+                    </div>
+                </li>
+            </div>
+        </div>
+    </article>
+</body>
+<script>
+    const all_slide_button = document.querySelectorAll("button.question_individual_slide");
+    [].forEach.call(all_slide_button, (slide_button) => {
+        slide_button.addEventListener("click", () => {
+            const slide_button_value = Number(slide_button.getAttribute("value"));
+            const value_content = document.querySelector(`.answer_individual_content[value='${slide_button_value}']`);
+            if(value_content.getAttribute("open") === null){
+                value_content.setAttribute("open", "");
+            } else {
+                value_content.removeAttribute("open");
+            }
+        }, false);
+    });
+</script>
+</html>

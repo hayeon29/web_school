@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('layouts/header') -%>
+<link rel = "stylesheet" href = "/css/menu_web_style.css">
+<link rel = "stylesheet" href = "/css/mypage_web_style.css">
+<link rel = "stylesheet" href = "/css/button_web_style.css">
+<link rel = "stylesheet" href = "/css/table_web_style.css">
+<body>
+    <%- include('layouts/navbar') -%>
+    <div class = "hero_banner">
+
+    </div>
+    <article class = "specific_page_container">
+        <%- include('layouts/mypage_menu') -%>
+        <div class = "content_container">
+            <h1 class="content_big_title">정보 수정</h1>
+            <div class = "article_content">
+                <div id = "mypage_info_menu">
+                    <ul id = "info_rows">
+                        <li class = "menu_row"><span class = "menu_bold_info">아이디</span>
+                            <span class = "menu_each_info">
+                                <%= user_id %>
+                            </span>
+                        </li>
+                        <li class = "menu_row"><span class = "menu_bold_info">비밀번호</span>
+                            <button id = "password" class = "menu_edit_button button">변경하기</button>
+                        </li>
+                        <li class = "menu_row"><span class = "menu_bold_info">이메일</span>
+                            <span class = "menu_each_info">
+                                <%= email %>
+                            </span>
+                            <button id = "email" class = "menu_edit_button button">변경하기</button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </article>
+    <div id = "popup_dim">
+        <div id = "popup_content">
+            <span>이메일 변경하기<button id = "popup_exit" class = "button">X</button></span>
+            <label for = "email_cur">기존 이메일</label>
+            <input type = "email" id = "email_cur" placeholder="<%= email %>" readonly></input>
+            <label for = "email_change">변경할 이메일</label>
+            <input type = "email" id = "email_change" placeholder="변경할 이메일"></input>
+            <p class = "check_result" name = "email">변경 결과</p>
+            <button id = "email_change_button" class = "button" type = "button">변경하기</button>
+        </div>
+    </div>
+    <script type = "text/javascript" src = "/js/info_check.js"></script>
+</body>
+</html>

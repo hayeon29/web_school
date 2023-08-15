@@ -1,0 +1,8 @@
+.env
+package-lock.json
+package.json
+Procfile
+
+/js/jquery-3.6.0.min.js
+
+/node_modules

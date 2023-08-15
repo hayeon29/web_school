@@ -1,0 +1,48 @@
+<div class = "write_content">
+    <div class = "write_content_title">
+        <p class = "write_content_label">제목</p>
+        <% if(content === null || content === undefined) { %>
+            <input type = "text" placeholder = "제목" name = "title"/>
+        <% } else { %>
+            <input type = "text" placeholder = "제목" name = "title" value = "<%= content.title %>"/>
+        <% } %>
+    </div>
+    <div class = "write_content_content">
+        <p class = "write_content_label">내용</p>
+        <% if(content === null || content === undefined) { %>
+            <textarea id="editor" name="content"></textarea>
+        <% } else { %>
+            <textarea id="editor" name="content" value = "<%= content.content %>"></textarea>
+        <% } %>
+    </div>
+    <div class = "write_content_submit">
+        <button onclick = "updateBefore()" type="submit">글쓰기</button>
+    </div>
+</div>
+<script>
+    CKEDITOR.editorConfig = function(config) {
+        config.resize_minWidth = 1100;
+        config.resize_maxWidth = 1500;
+        config.resize_minHeight = 200;
+        config.resize_maxHeight = 400;
+    };
+
+    CKEDITOR.replace( 'editor' , {
+        width: 'calc(100% - 2.222px)',
+        height: '400px',
+        on: {
+            instanceReady: (event) => {
+                if('<%- content.content %>' !== "null"){
+                    const content = '<%- content.content %>';
+                    CKEDITOR.instances['editor'].insertHtml(content);
+                }
+            }
+        }
+    });
+    
+    function updateBefore(){
+        for (instance in CKEDITOR.instances) {
+            CKEDITOR.instances[instance].updateElement();
+        }
+    }
+</script>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('layouts/header') -%>
+<link rel="stylesheet" href="/css/writing_board_web_style.css">
+<link rel = "stylesheet" href = "/css/menu_web_style.css">
+<body>
+    <%- include('layouts/navbar') -%>
+    <div class = "hero_banner">
+
+    </div>
+    <article class = "specific_page_container">
+        <div class = "lnb_container">
+            <nav class = "lnb_container_nav">
+                <div class = "nav_header">
+                    <span>
+                        커뮤니티
+                    </span>
+                </div>
+                <ol class = "nav_container">
+                    <li><a href = "/anonymous-post?page=1"><span>익명 게시판</span></a></li>
+                    <li><a href = "/qna"><span>Q&A</span></a></li>
+                </ol>
+            </nav>
+        </div>
+        <form id = "anonymous_post" method = "POST">
+            <p class = "content_title_type">익명 게시판</p>
+            <%- include('layouts/write') -%>
+        </form>
+    </article>
+    <script type = "text/javascript" src = "/js/write.js"></script>
+</body>
+</html>

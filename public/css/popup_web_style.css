@@ -1,0 +1,22 @@
+.popup_small{
+    width: 448px;
+    min-width: 256px;
+}
+
+.center_container{
+    display: flex;
+    justify-content: center;
+}
+
+.message_container{
+    width: inherit;
+    box-sizing: border-box;
+    border: 1px solid #b9b9b9;
+    padding: 40px 80px;
+    background-color: #dcdcdc;
+}
+
+.button_container{
+    display: flex;
+    justify-content: space-between;
+}

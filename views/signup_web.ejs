@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('layouts/header') -%>
+<link rel="stylesheet" href="/css/signup_web_style.css">
+<body>
+    <%- include('layouts/navbar') -%>
+    <div class = "hero_banner">
+
+    </div>
+    <article>
+        <div class = "signup_content">
+            <h1 class = "signup_title">회원가입</h1>
+            <hr class = "divide_line"/>
+            <div class = "input_container">
+                <p class = "input_descript">아이디를 작성해주세요.</p>
+                <p class = "input_condition">8~15자 이내만 가능</p>
+                <input class = "input_input" type = "text" placeholder="아이디 입력" maxlength="15">
+                <p class = "input_result">사용 가능한 아이디입니다.</p>
+            </div>
+            <div class = "input_container">
+                <p class = "input_descript">비밀번호를 작성해주세요.</p>
+                <p class = "input_condition">8~20자 이내, 숫자, 영문자, 특수문자(!@#$%^&*())만을 포함 </p>
+                <input class = "input_input" type = "password" placeholder="비밀번호 입력" maxlength="20">
+                <p class = "input_result">사용할 수 없는 비밀번호입니다.</p>
+            </div>
+            <div class = "input_container">
+                <p class = "input_descript">비밀번호를 다시 한 번 더 작성해주세요</p>
+                <input class = "input_input" type = "password" placeholder="확인용 비밀번호 입력" maxlength="20">
+                <p class = "input_result">비밀번호가 일치합니다.</p>
+            </div>
+            <div class = "input_container">
+                <p class = "input_descript">사용할 닉네임을 설정해주세요.</p>
+                <input class = "input_input" type = "text" placeholder="닉네임 입력">
+            </div>
+            <div class = "input_container" id = "email_receive">
+                <p class = "input_descript">이메일을 수신하시겠습니까?</p>
+                <div class = "toggle_container">
+                    <input type = "checkbox" id = "email_receive_toggle">
+                    <label for = "email_receive_toggle">on/off</label>
+                    <input class = "input_input" type = "email" placeholder="이메일 입력"> 
+                </div>
+            </div>
+            <button class = "input_next_button invalid" type = "button">다음</button>
+        </div>
+    </article>
+    <script src="./js/signup_event.js"></script>
+</body>
+</html>

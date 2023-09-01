@@ -1,52 +1,60 @@
 <nav>
-    <div class = "nav menu">
-        <div class = "content_logo">
-            <a href = "/">
-                <span id = "logo"></span>
-                <div>한솔 고등학교</div>
-            </a>
-        </div>
-        <ul>
-            <li class = "nav nav_menu_item" id = "world">
-                <a href = "/introduce">
-                    학교소개
-                </a>
-                <ul>
-                    <li><a href="/introduce"><span>학교 현황</span></a></li>
-                    <li><a href="/calendar"><span>학사 일정</span></a></li>
-                    <li><a href="/student"><span>교직원 소개</span></a></li>
-                    <li><span>오시는 길</span></li>
-                </ul>
-            </li>
-            <li class = "nav nav_menu_item" id = "notice">
-                <a href = "/notice?page=1">
-                    공지사항
-                </a>
-                <ul>
-                    <li><a href = "/notice?page=1"><span>공지사항</span></a></li>
-                    <li><span>오늘의 급식</span></li>
-                </ul>
-            </li>
-            <li class = "nav nav_menu_item" id = "apply_form">
-                <a href = "/anonymous-post?page=1">
-                    커뮤니티
-                </a>
-                <ul>
-                    <li><a href = "/anonymous-post?page=1"><span>익명 게시판</span></a></li>
-                    <li><a href = "/qna"><span>Q&A</span></a></li>
-                </ul>
-            </li>
-        </ul>
-        <div id = "nav_user" class = "nav">
-            <% if(!isLoggedIn) { %>
-                <span id = "nav_login" class = "nav"><a href = "/login">로그인</a></span>
-                <span id = "nav_signup" class = "nav"><button><a href="/signup">회원가입</a></button></span>
-            <% } %>
-            <% if(isLoggedIn) { %> 
-                <span id = "nav_mypage" class = "nav"><a href = "/mypage?menu=editMemberInfo">마이페이지</a></span>
-                <span id = "nav_logout" class = "nav"><a href = "/logout">로그아웃</a></span>
-            <% } %>
-        </div>
+  <div class="nav menu">
+    <div class="content_logo">
+      <a href="/">
+        <span id="logo"></span>
+      </a>
     </div>
+    <ul>
+      <li class="nav nav_menu_item" id="world">
+        <a href="/introduce"> 학교소개 </a>
+        <ul>
+          <li>
+            <a href="/introduce"><span>학교 현황</span></a>
+          </li>
+          <li>
+            <a href="/calendar"><span>학사 일정</span></a>
+          </li>
+          <li>
+            <a href="/student"><span>교직원 소개</span></a>
+          </li>
+          <li><span>오시는 길</span></li>
+        </ul>
+      </li>
+      <li class="nav nav_menu_item" id="notice">
+        <a href="/notice?page=1"> 공지사항 </a>
+        <ul>
+          <li>
+            <a href="/notice?page=1"><span>공지사항</span></a>
+          </li>
+          <li><span>오늘의 급식</span></li>
+        </ul>
+      </li>
+      <li class="nav nav_menu_item" id="apply_form">
+        <a href="/anonymous-post?page=1"> 커뮤니티 </a>
+        <ul>
+          <li>
+            <a href="/anonymous-post?page=1"><span>익명 게시판</span></a>
+          </li>
+          <li>
+            <a href="/qna"><span>Q&A</span></a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <div id="nav_user" class="nav">
+      <% if(!isLoggedIn) { %>
+      <span id="nav_login" class="nav"><a href="/login">로그인</a></span>
+      <span id="nav_signup" class="nav"
+        ><button><a href="/signup">회원가입</a></button></span
+      >
+      <% } %> <% if(isLoggedIn) { %>
+      <span id="nav_mypage" class="nav"
+        ><a href="/mypage?menu=editMemberInfo">마이페이지</a></span
+      >
+      <span id="nav_logout" class="nav"><a href="/logout">로그아웃</a></span>
+      <% } %>
+    </div>
+  </div>
 </nav>
-<div class = "float_clear"></div>
+<div class="float_clear"></div>

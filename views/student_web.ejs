@@ -1,41 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-<%- include('layouts/header') -%>
-<link rel="stylesheet" href="/css/student_web_style.css">
-<link rel="stylesheet" href="/css/menu_web_style.css">
-<body>
+  <%- include('layouts/header') -%>
+  <link rel="stylesheet" href="/css/student_web_style.css" />
+  <link rel="stylesheet" href="/css/menu_web_style.css" />
+  <body>
     <%- include('layouts/navbar') -%>
-    <div class = "hero_banner">
-
-    </div>
-    <article class = "specific_page_container" id  = "notice">
-        <div class = "lnb_container">
-            <nav class = "lnb_container_nav">
-                <div class = "nav_header">
-                    <span>
-                        학교 소개
-                    </span>
-                </div>
-                <ol class = "nav_container">
-                    <li><a href="/introduce"><span>학교 현황</span></a></li>
-                    <li><a href="/calendar"><span>학사 일정</span></a></li>
-                    <li><a href="/student"><span>교직원 소개</span></a></li>
-                    <li><span>오시는 길</span></li>
-                </ol>
-            </nav>
+    <div class="hero_banner"></div>
+    <article class="specific_page_container" id="notice">
+      <div class="lnb_container">
+        <nav class="lnb_container_nav">
+          <div class="nav_header">
+            <span> 학교 소개 </span>
+          </div>
+          <ol class="nav_container">
+            <li>
+              <a href="/introduce"><span>학교 현황</span></a>
+            </li>
+            <li>
+              <a href="/calendar"><span>학사 일정</span></a>
+            </li>
+            <li>
+              <a href="/student"><span>교직원 소개</span></a>
+            </li>
+            <li><span>오시는 길</span></li>
+          </ol>
+        </nav>
+      </div>
+      <div class="content_container">
+        <h1 class="content_big_title">교직원 소개</h1>
+        <div class="member_container">
+          <% for(let i = 0; i < members.length; i++) { %>
+          <div class="member_individual">
+            <% if(members[i].image === undefined) { %>
+            <img class="member_img" src="./img/member_default.png" />
+            <% } else { %>
+            <img class="member_img" src="<%= members[i].image %>" /> <% } %>
+            <div class="member_name"><%= members[i].name %></div>
+            <div class="member_sub"><%= members[i].position %></div>
+          </div>
+          <% } %>
         </div>
-        <div class="content_container">
-            <h1 class = "content_big_title"> 교직원 소개 </h1>
-            <div class = "member_container">
-                <% for(let i = 0; i < members.length; i++) { %>
-                    <div class = "member_individual">
-                        <img class = "member_img" src="<%= members[i].image %>">
-                        <div class = "member_name"><%= members[i].name %></div>
-                        <div class = "member_sub"><%= members[i].position %></div>
-                    </div>
-                <% } %>
-            </div>
-        </div>
+      </div>
     </article>
-</body>
+  </body>
 </html>

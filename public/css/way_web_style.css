@@ -1,0 +1,62 @@
+.content_container {
+  width: 1100px;
+  max-width: 1100px;
+  min-width: 800px;
+}
+
+.content_big_title {
+  padding: 10px 20px 20px 20px;
+  margin: 0px;
+  border-bottom: 3px solid black;
+}
+
+.way_content {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#map_content {
+  width: 450px;
+  height: 450px;
+  background-color: #d9d9d9;
+}
+
+#map_descript {
+  width: calc(100% - 450px - 20px);
+  height: 450px;
+  border: 1px solid #d9d9d9;
+  padding: 20px;
+}
+
+#map_descript > :not(:first-child) {
+  margin-top: 8px;
+}
+
+#map_descript > :not(.map_descript_bus_stop) {
+  display: flex;
+  flex-direction: row;
+}
+
+.map_descript_title {
+  font-weight: bold;
+}
+
+#map_descript > :not(.map_descript_bus_stop) > .map_descript_descript {
+  margin-left: 20px;
+}
+
+.map_descript_bus_stop {
+  display: flex;
+  flex-direction: column;
+}
+
+.map_descript_bus_stop > .map_descript_descript {
+  margin-top: 8px;
+}
+
+.bus_stop_list > li {
+  list-style-type: decimal;
+  list-style-position: inside;
+}

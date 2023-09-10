@@ -1,32 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
-<%- include('layouts/header') -%>
-<link rel="stylesheet" href="/css/writing_board_web_style.css">
-<link rel="stylesheet" href="/css/menu_web_style.css">
-<body>
+<html lang="ko">
+  <%- include('layouts/header') -%>
+  <link rel="stylesheet" href="/css/writing_board_web_style.css" />
+  <link rel="stylesheet" href="/css/menu_web_style.css" />
+  <body>
     <%- include('layouts/navbar') -%>
-    <div class = "hero_banner">
-
-    </div>
-    <article class = "specific_page_container">
-        <div class = "lnb_container">
-            <nav class = "lnb_container_nav">
-                <div class = "nav_header">
-                    <span>
-                        공지사항
-                    </span>
-                </div>
-                <ol class = "nav_container">
-                    <li><a href = "/notice?page=1"><span>공지사항</span></a></li>
-                    <li><span>오늘의 급식</span></li>
-                </ol>
-            </nav>
-        </div>
-        <form id = "notice" method = "POST">
-            <p class = "content_title_type">공지 사항</p>
-            <%- include('layouts/write') -%>
-        </form>
+    <div class="hero_banner"></div>
+    <article class="specific_page_container">
+      <div class="lnb_container">
+        <nav class="lnb_container_nav">
+          <div class="nav_header">
+            <span> 공지사항 </span>
+          </div>
+          <ol class="nav_container">
+            <li>
+              <a href="/notice?page=1"><span>공지사항</span></a>
+            </li>
+            <li><span>오늘의 급식</span></li>
+          </ol>
+        </nav>
+      </div>
+      <form id="notice" method="POST">
+        <p class="content_title_type">공지 사항</p>
+        <%- include('layouts/write') -%>
+      </form>
     </article>
-    <script type = "text/javascript" src = "/js/write.js"></script>
-</body>
+    <script type="text/javascript" src="/js/write.js"></script>
+  </body>
 </html>

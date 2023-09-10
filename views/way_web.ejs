@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <%- include('layouts/header') -%>
+  <link rel="stylesheet" href="/css/menu_web_style.css" />
+  <link rel="stylesheet" href="/css/way_web_style.css" />
+  <script
+    type="text/javascript"
+    src="//dapi.kakao.com/v2/maps/sdk.js?appkey=<%= MAP_KEY %>"
+  ></script>
+  <body>
+    <%- include('layouts/navbar') -%>
+    <div class="hero_banner"></div>
+    <article class="specific_page_container">
+      <div class="lnb_container">
+        <nav class="lnb_container_nav">
+          <div class="nav_header">
+            <span> 학교 소개 </span>
+          </div>
+          <ol class="nav_container">
+            <li>
+              <a href="/introduce"><span>학교 현황</span></a>
+            </li>
+            <li>
+              <a href="/calendar"><span>학사 일정</span></a>
+            </li>
+            <li>
+              <a href="/student"><span>교직원 소개</span></a>
+            </li>
+            <li>
+              <a href="/way"><span>오시는 길</span></a>
+            </li>
+          </ol>
+        </nav>
+      </div>
+      <div class="content_container">
+        <h1 class="content_big_title">오시는 길</h1>
+        <div class="way_content">
+          <div id="map_content"></div>
+          <div id="map_descript">
+            <div class="map_descript_address">
+              <div class="map_descript_title">주소</div>
+              <div class="map_descript_descript">OO시 OO로 OOO</div>
+            </div>
+            <div class="map_descript_contact">
+              <div class="map_descript_title">전화</div>
+              <div class="map_descript_descript">0XX-XXX-XXXX</div>
+            </div>
+            <div class="map_descript_bus_stop">
+              <div class="map_descript_title">주변 정류장</div>
+              <div class="map_descript_descript">
+                <ol class="bus_stop_list">
+                  <li>XXXX</li>
+                  <li>XXXX</li>
+                  <li>XXXX</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+    <script src="./js/map.js"></script>
+  </body>
+</html>

@@ -1,31 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
-<%- include('layouts/header') -%>
-<link rel = "stylesheet" href = "/css/menu_web_style.css">
-<link rel = "stylesheet" href = "/css/mypage_web_style.css">
-<link rel = "stylesheet" href = "/css/button_web_style.css">
-<body>
+<html lang="ko">
+  <%- include('layouts/header') -%>
+  <link rel="stylesheet" href="/css/menu_web_style.css" />
+  <link rel="stylesheet" href="/css/mypage_web_style.css" />
+  <link rel="stylesheet" href="/css/button_web_style.css" />
+  <body>
     <%- include('layouts/navbar') -%>
-    <div class = "hero_banner">
-
-    </div>
-    <article class = "specific_page_container">
-        <%- include('layouts/mypage_menu') -%>
-        <div class = "content_container">
-            <h1 class="content_big_title">회원 탈퇴</h1>
-            <div class = "article_content">
-                <p class = "bold">사이트를 탈퇴하시겠습니까?</p>
-                <p>탈퇴 시 해당 정보가 삭제됩니다.</p>
-                <div class = "list_box">
-                    <ul>
-                        <li>사용자의 개인정보</li>
-                        <li>작성한 게시글</li>
-                    </ul>
-                </div>
-                <button id = "user_withdraw" class = "button large_button">탈퇴하기</button>
-            </div>
+    <div class="hero_banner"></div>
+    <article class="specific_page_container">
+      <%- include('layouts/mypage_menu') -%>
+      <div class="content_container">
+        <h1 class="content_big_title">회원 탈퇴</h1>
+        <div class="article_content">
+          <p class="bold">사이트를 탈퇴하시겠습니까?</p>
+          <p>탈퇴 시 해당 정보가 삭제됩니다.</p>
+          <div class="list_box">
+            <ul>
+              <li>사용자의 개인정보</li>
+              <li>작성한 게시글</li>
+            </ul>
+          </div>
+          <button id="user_withdraw" class="button large_button">
+            탈퇴하기
+          </button>
         </div>
+      </div>
     </article>
-    <script type = "text/javascript" src = "/js/withdraw.js"></script>
-</body>
+    <script type="text/javascript" src="/js/withdraw.js"></script>
+  </body>
 </html>

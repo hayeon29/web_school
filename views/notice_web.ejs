@@ -1,76 +1,92 @@
 <!DOCTYPE html>
-<html lang="en">
-<%- include('layouts/header') -%>
-<link rel="stylesheet" href="/css/board_web_style.css">
-<link rel="stylesheet" href="/css/menu_web_style.css">
-<body>
+<html lang="ko">
+  <%- include('layouts/header') -%>
+  <link rel="stylesheet" href="/css/board_web_style.css" />
+  <link rel="stylesheet" href="/css/menu_web_style.css" />
+  <body>
     <%- include('layouts/navbar') -%>
-    <div class = "hero_banner">
-
-    </div>
-    <article class = "specific_page_container" id  = "notice">
-        <div class = "lnb_container">
-            <nav class = "lnb_container_nav">
-                <div class = "nav_header">
-                    <span>
-                        공지사항
-                    </span>
-                </div>
-                <ol class = "nav_container">
-                    <li><a href = "/notice?page=1"><span>공지사항</span></a></li>
-                    <li><span>오늘의 급식</span></li>
-                </ol>
-            </nav>
+    <div class="hero_banner"></div>
+    <article class="specific_page_container" id="notice">
+      <div class="lnb_container">
+        <nav class="lnb_container_nav">
+          <div class="nav_header">
+            <span> 공지사항 </span>
+          </div>
+          <ol class="nav_container">
+            <li>
+              <a href="/notice?page=1"><span>공지사항</span></a>
+            </li>
+            <li><span>오늘의 급식</span></li>
+          </ol>
+        </nav>
+      </div>
+      <div class="content_container">
+        <h1 class="content_big_title">공지사항</h1>
+        <table class="content_table">
+          <thead>
+            <tr>
+              <td class="board_head_no">번호</td>
+              <td class="board_head_title">제목</td>
+              <td class="board_head_writer">작성자</td>
+              <td class="board_head_date">작성일</td>
+            </tr>
+          </thead>
+          <tbody>
+            <% for(let i = notice.length - ((page - 1) * 6) - 1; i >= ((page * 6
+            > notice.length) ? 0 : notice.length - (page * 6)); i--){ %>
+            <tr>
+              <td class="board_no"><%= i + 1 %></td>
+              <td class="board_title">
+                <a href="/notice/content?id=<%= notice[i]._id %>"
+                  ><%= notice[i].title %></a
+                >
+              </td>
+              <td class="board_writer"><%= notice[i].writerID %></td>
+              <td class="board_date"><%= notice[i].DATE %></td>
+            </tr>
+            <% } %>
+          </tbody>
+        </table>
+        <div class="content_page">
+          <% if(page == 1) { %>
+          <a class="prev_btn" style="cursor: default"></a>
+          <% } else { %>
+          <a href="/notice?page=<%= page - 1 %>" class="prev_btn"></a>
+          <% }%> <% for(let i = parseInt(page / 5) * 5 + 1; i <=
+          ((parseInt(notice.length / 6) + 1) - page <= 5 ?
+          parseInt(notice.length / 6) + 1 : parseInt(page / 5) * 5 + 5); i++) {
+          %> <% if(i == page) { %>
+          <a
+            href="/notice?page=<%= i %>"
+            class="page_number cur"
+            value="<%= i %>"
+            ><%= i %></a
+          >
+          <% } else { %>
+          <a href="/notice?page=<%= i %>" class="page_number" value="<%= i %>"
+            ><%= i %></a
+          >
+          <% } %> <% } %> <% if(page * 6 > notice.length) { %>
+          <a class="next_btn" style="cursor: default"></a>
+          <% } else { %>
+          <a href="/notice?page=<%= page + 1 %>" class="next_btn"></a>
+          <% } %>
         </div>
-        <div class="content_container">
-            <h1 class = "content_big_title"> 공지사항 </h1>
-            <table class = "content_table">
-                <thead>
-                    <tr>
-                        <td class = "board_head_no">번호</td>
-                        <td class = "board_head_title">제목</td>
-                        <td class = "board_head_writer">작성자</td>
-                        <td class = "board_head_date">작성일</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <% for(let i = notice.length - ((page - 1) * 6) - 1; i >= ((page * 6 > notice.length) ? 0 : notice.length - (page * 6)); i--){ %>
-                        <tr>
-                            <td class="board_no"><%= i + 1 %></td>
-                            <td class="board_title"><a href="/notice/content?id=<%= notice[i]._id %>"><%= notice[i].title %></a></td>
-                            <td class="board_writer"><%= notice[i].writerID %></td>
-                            <td class="board_date"><%= notice[i].DATE %></td>
-                        </tr>
-                    <% } %>
-                </tbody>
-            </table>
-            <div class = "content_page">
-                <% if(page == 1) { %>
-                    <a class = "prev_btn" style = "cursor: default;"></a>
-                <% } else { %>
-                    <a href = "/notice?page=<%= page - 1 %>" class = "prev_btn"></a>
-                <% }%>
-                <% for(let i = parseInt(page / 5) * 5 + 1; i <= ((parseInt(notice.length / 6) + 1) - page <= 5 ? parseInt(notice.length / 6) + 1 : parseInt(page / 5) * 5 + 5); i++) { %>
-                    <% if(i == page) { %>
-                        <a href = "/notice?page=<%= i %>" class = "page_number cur" value = "<%= i %>"><%= i %></a>
-                    <% } else { %>
-                        <a href = "/notice?page=<%= i %>" class = "page_number" value = "<%= i %>"><%= i %></a>
-                    <% } %>
-                <% } %>
-                <% if(page * 6 > notice.length) { %>
-                    <a class = "next_btn" style = "cursor: default;"></a>
-                <% } else { %>
-                    <a href = "/notice?page=<%= page + 1 %>" class = "next_btn"></a>
-                <% } %>
-            </div>
-            <div class = "content_footer">
-                <% if(isLoggedIn) { %>
-                    <button id = "notice" class="button" type="button" title="글쓰기" onclick = "writeContent()">글쓰기</button>
-                <% } %>
-            </div>
+        <div class="content_footer">
+          <% if(isLoggedIn) { %>
+          <button
+            id="notice"
+            class="button"
+            type="button"
+            title="글쓰기"
+            onclick="writeContent()"
+          >
+            글쓰기
+          </button>
+          <% } %>
         </div>
+      </div>
     </article>
-    <script type = "text/javascript" src = "/js/content_event.js"></script> 
-</body>
+    <script type="text/javascript" src="/js/content_event.js"></script>
+  </body>
 </html>
-

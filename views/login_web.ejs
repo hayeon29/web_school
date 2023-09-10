@@ -1,17 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
-<%- include('layouts/header') -%>
-<link rel="stylesheet" href="/css/login_web_style.css">
-<body>
+<html lang="ko">
+  <%- include('layouts/header') -%>
+  <link rel="stylesheet" href="/css/login_web_style.css" />
+  <body>
     <%- include('layouts/navbar') -%>
-        <form id = "form_login" action="/login/result" method="POST">
-            <span id = "login_title">로그인</span>
-            <span class = "input_title">아이디</span>
-            <input type = "text" id = "id" class = "input_content" placeholder="아이디" name="id">
-            <span class = "input_title">비밀번호</span>
-            <input type = "password" id = "password" class = "input_content" placeholder="비밀번호" name="password">
-            <button id = "sign_in" type = "submit">로그인</button>
-        </form>
-    <script src = "/js/sign_in_event.js"></script>
-</body>
+    <form id="form_login" action="/login/result" method="POST">
+      <span id="login_title">로그인</span>
+      <span class="input_title">아이디</span>
+      <input
+        type="text"
+        id="id"
+        class="input_content"
+        placeholder="아이디"
+        name="id"
+      />
+      <span class="input_title">비밀번호</span>
+      <input
+        type="password"
+        id="password"
+        class="input_content"
+        placeholder="비밀번호"
+        name="password"
+      />
+      <button id="sign_in" type="submit">로그인</button>
+    </form>
+    <script src="/js/sign_in_event.js"></script>
+  </body>
 </html>

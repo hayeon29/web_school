@@ -1,239 +1,337 @@
 <!DOCTYPE html>
-<html lang="en">
-<%- include('layouts/header') -%>
-<link rel="stylesheet" href="/css/main_web_style.css">
-<body>
+<html lang="ko">
+  <%- include('layouts/header') -%>
+  <link rel="stylesheet" href="/css/main_web_style.css" />
+  <body>
     <%- include('layouts/navbar') -%>
     <article>
-        <div class = "slide_banner_container">
-            <div class = "slide_banner_cell" style="display: block; position: absolute; background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);"></div>
-            <div class = "slide_banner_cell" style="display: none; position: absolute; background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);"></div>
-            <div class = "slide_banner_cell" style="display: none; position: absolute; background-image: linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%);"></div>
-            <div class = "slide_banner_cell" style="display: none; position: absolute; background-image: linear-gradient(to top, #5ee7df 0%, #b490ca 100%);"></div>
-            <div class = "slide_banner_cell" style="display: none; position: absolute; background-image: linear-gradient(to right, #eea2a2 0%, #bbc1bf 19%, #57c6e1 42%, #b49fda 79%, #7ac5d8 100%);"></div>
-            <div class = "slide_controller">
-                <div class = "slide_util">
-                    <button type = "button" class = "button prev_btn" onclick = "slideClickEvent(this)">
-                        <span class = "blind">이전 배너 보기</span>
-                    </button>
-                    <div class = "slide_page">
-                        <ol>
-                            <li class = "cur" onclick = "slideClickEvent(this)"></li>
-                            <li onclick = "slideClickEvent(this)"></li>
-                            <li onclick = "slideClickEvent(this)"></li>
-                            <li onclick = "slideClickEvent(this)"></li>
-                            <li onclick = "slideClickEvent(this)"></li>
-                        </ol>
-                    </div>
-                    <button type = "button" class = "button next_btn" onclick = "slideClickEvent(this)">
-                        <span class = "blind">다음 배너 보기</span>
-                    </button>
-                </div>
+      <div class="slide_banner_container">
+        <div
+          class="slide_banner_cell"
+          style="
+            display: block;
+            position: absolute;
+            background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);
+          "
+        ></div>
+        <div
+          class="slide_banner_cell"
+          style="
+            display: none;
+            position: absolute;
+            background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+          "
+        ></div>
+        <div
+          class="slide_banner_cell"
+          style="
+            display: none;
+            position: absolute;
+            background-image: linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%);
+          "
+        ></div>
+        <div
+          class="slide_banner_cell"
+          style="
+            display: none;
+            position: absolute;
+            background-image: linear-gradient(to top, #5ee7df 0%, #b490ca 100%);
+          "
+        ></div>
+        <div
+          class="slide_banner_cell"
+          style="
+            display: none;
+            position: absolute;
+            background-image: linear-gradient(
+              to right,
+              #eea2a2 0%,
+              #bbc1bf 19%,
+              #57c6e1 42%,
+              #b49fda 79%,
+              #7ac5d8 100%
+            );
+          "
+        ></div>
+        <div class="slide_controller">
+          <div class="slide_util">
+            <button
+              type="button"
+              class="button prev_btn"
+              onclick="slideClickEvent(this)"
+            >
+              <span class="blind">이전 배너 보기</span>
+            </button>
+            <div class="slide_page">
+              <ol>
+                <li class="cur" onclick="slideClickEvent(this)"></li>
+                <li onclick="slideClickEvent(this)"></li>
+                <li onclick="slideClickEvent(this)"></li>
+                <li onclick="slideClickEvent(this)"></li>
+                <li onclick="slideClickEvent(this)"></li>
+              </ol>
             </div>
+            <button
+              type="button"
+              class="button next_btn"
+              onclick="slideClickEvent(this)"
+            >
+              <span class="blind">다음 배너 보기</span>
+            </button>
+          </div>
         </div>
-        <div class = "content_wrap">
-            <div class = "content_wrap_row">
-                <div class = "content_wrap_content notice">
-                    <div class = "content_title_wrap">
-                        <span class = "content_title">공지사항</span>
-                        <a href="/notice?page=1" class = "plus_icon"><img src = "./img/plus.png" class = "plus_icon"></a>
-                    </div>
-                    <div class = "content_content">
-                        <ol>
-                            <% for(let i = 0; i < notices.length; i++) { %> 
-                                <li class = "board_title">
-                                    <a href = "/notice/content/<%= notices[i]._id %>" class = "board_text"><%= notices[i].title %></a>
-                                    <span><%= notices[i].DATE %></span>
-                                </li>
-                            <% } %>
-                        </ol>
-                    </div>
-                </div>
+      </div>
+      <div class="content_wrap">
+        <div class="content_wrap_row">
+          <div class="content_wrap_content notice">
+            <div class="content_title_wrap">
+              <span class="content_title">공지사항</span>
+              <a href="/notice?page=1" class="plus_icon"
+                ><img src="./img/plus.png" class="plus_icon"
+              /></a>
             </div>
-            <div class = "float_clear"></div>
-            <div class= "content_wrap_row" >
-                <div class = "content_wrap_content meal">
-                    <div class = "content_title_wrap">
-                        <span class = "content_title">오늘의 급식</span>
-                        <a href="#" class = "plus_icon"><img src = "/img/plus.png" class = "plus_icon"></a>
-                    </div>
-                    <div class = "content_content" date = "<%= cur_date %>">
-                        <% let count = 0; %>
-                        <% let isDataExist = false; %>
-                        <div class = "cur_date">
-                            <div class = "cur_date_content">
-                                <button type = "button" class = "button prev_button">
-                                    <span class = "blind">이전 날짜 보기</span>
-                                </button>
-                                <span>
-                                    <span class = "cur_date_date">
-                                        <%= school_meal_date %>
-                                    </span>
-                                    <span class = "bold cur_date_week">
-                                        (<%= school_meal_day_week %>)
-                                    </span>
-                                </span>
-                                <button type = "button" class = "button next_button">
-                                    <span class = "blind">다음 날짜 보기</span>
-                                </button>
-                            </div>
-                            <div class = "cur_date_button">
-                                <button type = "button" class = "cur" value = "1">
-                                    조식
-                                </button>
-                                <button type = "button" value = "2">
-                                    중식
-                                </button>
-                                <button type = "button" value = "3">
-                                    석식
-                                </button>
-                            </div>
-                        </div>
-                        <div class = "cur_menu">
-                            <ol class = "cur breakfast" value = "1">
-                                <% if(isDataExist == true){ %>
-                                    <% for(let i = 0; i < school_meal[count].meal.length; i++) { %>
-                                        <li><%= school_meal[count].meal[i] %></li>
-                                    <% } %>
-                                    <% count++; %>
-                                <% } else { %>
-                                    <li> 급식 정보가 없습니다 </li>
-                                <% } %>
-                            </ol>
-                            <ol class="lunch" value = "2">
-                                <% if(isDataExist == true){ %>
-                                    <% for(let i = 0; i < school_meal[count].meal.length; i++) { %>
-                                        <li><%= school_meal[count].meal[i] %></li>
-                                    <% } %>
-                                    <% count++; %>
-                                <% } else { %>
-                                    <li> 급식 정보가 없습니다 </li>
-                                <% } %>
-                            </ol>
-                            <ol class="dinner" value = "3">
-                                <% if(isDataExist == true){ %>
-                                    <% for(let i = 0; i < school_meal[count].meal.length; i++) { %>
-                                        <li><%= school_meal[count].meal[i] %></li>
-                                    <% } %>
-                                    <% count++; %>
-                                <% } else { %>
-                                    <li> 급식 정보가 없습니다 </li>
-                                <% } %>
-                            </ol>
-                        </div>
-                    </div>
-                </div>
-                <div class = "content_wrap_content calendar">
-                    <div class = "content_title_wrap">
-                        <span class = "content_title">학사일정</span>
-                        <a href="/calendar" class = "plus_icon"><img src = "/img/plus.png" class = "plus_icon"></a>
-                    </div>
-                    <div class = "content_content">
-                        <% count = 0; %>
-                        <% isDataExist = false; %>
-                        <% const cur_date_format = new Date(cur_date); %>
-                        <div class = "cur_date">
-                            <div class = "cur_date_content">
-                                <button type = "button" class = "button prev_button">
-                                    <span class = "blind">이전 날짜 보기</span>
-                                </button>
-                                <span>
-                                    <span>
-                                        <%= cur_date_format.getFullYear() %>
-                                    </span>
-                                    <span class = "bold">
-                                        <% const cur_month_format = cur_date_format.getMonth() + 1; %>
-                                        <%= cur_month_format.toString().padStart(2, "0"); %>
-                                    </span>
-                                </span>
-                                <button type = "button" class = "button next_button">
-                                    <span class = "blind">다음 날짜 보기</span>
-                                </button>
-                            </div>
-                        </div>
-                        <div class = "cur_menu">
-                            <ol class = "cur">
-                                <li class = "cur_menu_title">
-                                    <span class = "bold cur_menu_date">07-01</span>
-                                    <span class = "cur_menu_date_describe">7월 1일 일정</span>
-                                </li>
-                                <li class = "cur_menu_title">
-                                    <span class = "bold cur_menu_date">07-02</span>
-                                    <span class = "cur_menu_date_describe">7월 2일 일정</span>
-                                </li>
-                            </ol>
-                            <% for(let i = 0; i < calendars.length; i++) { %>
-                                <li class = "cur_menu_title">
-                                    <span class = "bold cur_menu_date"><%= calendars[i].DATE %></span>
-                                    <span class = "cur_menu_date_describe"><%= calendars[i].content %></span>
-                                </li>
-                            <% } %>
-                        </div>
-                    </div>
-                </div>
+            <div class="content_content">
+              <ol>
+                <% for(let i = 0; i < notices.length; i++) { %>
+                <li class="board_title">
+                  <a
+                    href="/notice/content/<%= notices[i]._id %>"
+                    class="board_text"
+                    ><%= notices[i].title %></a
+                  >
+                  <span><%= notices[i].DATE %></span>
+                </li>
+                <% } %>
+              </ol>
             </div>
+          </div>
         </div>
+        <div class="float_clear"></div>
+        <div class="content_wrap_row">
+          <div class="content_wrap_content meal">
+            <div class="content_title_wrap">
+              <span class="content_title">오늘의 급식</span>
+              <a href="#" class="plus_icon"
+                ><img src="/img/plus.png" class="plus_icon"
+              /></a>
+            </div>
+            <div class="content_content" date="<%= cur_date %>">
+              <% let count = 0; %> <% let isDataExist = false; %>
+              <div class="cur_date">
+                <div class="cur_date_content">
+                  <button type="button" class="button prev_button">
+                    <span class="blind">이전 날짜 보기</span>
+                  </button>
+                  <span>
+                    <span class="cur_date_date"> <%= school_meal_date %> </span>
+                    <span class="bold cur_date_week">
+                      (<%= school_meal_day_week %>)
+                    </span>
+                  </span>
+                  <button type="button" class="button next_button">
+                    <span class="blind">다음 날짜 보기</span>
+                  </button>
+                </div>
+                <div class="cur_date_button">
+                  <button type="button" class="cur" value="1">조식</button>
+                  <button type="button" value="2">중식</button>
+                  <button type="button" value="3">석식</button>
+                </div>
+              </div>
+              <div class="cur_menu">
+                <ol class="cur breakfast" value="1">
+                  <% if(isDataExist == true){ %> <% for(let i = 0; i <
+                  school_meal[count].meal.length; i++) { %>
+                  <li><%= school_meal[count].meal[i] %></li>
+                  <% } %> <% count++; %> <% } else { %>
+                  <li>급식 정보가 없습니다</li>
+                  <% } %>
+                </ol>
+                <ol class="lunch" value="2">
+                  <% if(isDataExist == true){ %> <% for(let i = 0; i <
+                  school_meal[count].meal.length; i++) { %>
+                  <li><%= school_meal[count].meal[i] %></li>
+                  <% } %> <% count++; %> <% } else { %>
+                  <li>급식 정보가 없습니다</li>
+                  <% } %>
+                </ol>
+                <ol class="dinner" value="3">
+                  <% if(isDataExist == true){ %> <% for(let i = 0; i <
+                  school_meal[count].meal.length; i++) { %>
+                  <li><%= school_meal[count].meal[i] %></li>
+                  <% } %> <% count++; %> <% } else { %>
+                  <li>급식 정보가 없습니다</li>
+                  <% } %>
+                </ol>
+              </div>
+            </div>
+          </div>
+          <div class="content_wrap_content calendar">
+            <div class="content_title_wrap">
+              <span class="content_title">학사일정</span>
+              <a href="/calendar" class="plus_icon"
+                ><img src="/img/plus.png" class="plus_icon"
+              /></a>
+            </div>
+            <div class="content_content">
+              <% count = 0; %> <% isDataExist = false; %> <% const
+              cur_date_format = new Date(cur_date); %>
+              <div class="cur_date">
+                <div class="cur_date_content">
+                  <button type="button" class="button prev_button">
+                    <span class="blind">이전 날짜 보기</span>
+                  </button>
+                  <span>
+                    <span> <%= cur_date_format.getFullYear() %> </span>
+                    <span class="bold">
+                      <% const cur_month_format = cur_date_format.getMonth() +
+                      1; %> <%= cur_month_format.toString().padStart(2, "0"); %>
+                    </span>
+                  </span>
+                  <button type="button" class="button next_button">
+                    <span class="blind">다음 날짜 보기</span>
+                  </button>
+                </div>
+              </div>
+              <div class="cur_menu">
+                <ol class="cur">
+                  <li class="cur_menu_title">
+                    <span class="bold cur_menu_date">07-01</span>
+                    <span class="cur_menu_date_describe">7월 1일 일정</span>
+                  </li>
+                  <li class="cur_menu_title">
+                    <span class="bold cur_menu_date">07-02</span>
+                    <span class="cur_menu_date_describe">7월 2일 일정</span>
+                  </li>
+                </ol>
+                <% for(let i = 0; i < calendars.length; i++) { %>
+                <li class="cur_menu_title">
+                  <span class="bold cur_menu_date"
+                    ><%= calendars[i].DATE %></span
+                  >
+                  <span class="cur_menu_date_describe"
+                    ><%= calendars[i].content %></span
+                  >
+                </li>
+                <% } %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </article>
     <%- include('layouts/footer') -%>
     <script src="./js/meal.js"></script>
     <script>
-        const slide_banners = document.querySelectorAll(".slide_banner_cell");
-        const slide_pages = document.querySelectorAll(".slide_page > ol > li");
-        const animation_delay = 1000;
+      const slide_banners = document.querySelectorAll(".slide_banner_cell");
+      const slide_pages = document.querySelectorAll(".slide_page > ol > li");
+      const animation_delay = 1000;
 
-        let isDisabled = false;
+      let isDisabled = false;
 
-        async function slidePageNext(start_index, end_index){
-            slide_banners[start_index].style.setProperty("animation-duration", animation_delay + "ms");
-            slide_banners[start_index].style.setProperty("animation-name", "slideToLeft");
-            slide_banners[end_index].style.setProperty("display", "block");
-            slide_banners[end_index].style.setProperty("animation-duration", animation_delay + "ms");
-            slide_banners[end_index].style.setProperty("animation-name", "slideFromRight");
-            setTimeout(() => { slide_banners[start_index].style.setProperty("display", "none"); isDisabled = false;}, animation_delay);
-        }
+      async function slidePageNext(start_index, end_index) {
+        slide_banners[start_index].style.setProperty(
+          "animation-duration",
+          animation_delay + "ms"
+        );
+        slide_banners[start_index].style.setProperty(
+          "animation-name",
+          "slideToLeft"
+        );
+        slide_banners[end_index].style.setProperty("display", "block");
+        slide_banners[end_index].style.setProperty(
+          "animation-duration",
+          animation_delay + "ms"
+        );
+        slide_banners[end_index].style.setProperty(
+          "animation-name",
+          "slideFromRight"
+        );
+        setTimeout(() => {
+          slide_banners[start_index].style.setProperty("display", "none");
+          isDisabled = false;
+        }, animation_delay);
+      }
 
-        async function slidePagePrev(start_index, end_index){
-            slide_banners[start_index].style.setProperty("animation-duration", animation_delay + "ms");
-            slide_banners[start_index].style.setProperty("animation-name", "slideToRight");
-            slide_banners[end_index].style.setProperty("display", "block");
-            slide_banners[end_index].style.setProperty("animation-duration", animation_delay + "ms");
-            slide_banners[end_index].style.setProperty("animation-name", "slideFromLeft");
-            setTimeout(() => { slide_banners[start_index].style.setProperty("display", "none"); isDisabled = false;}, animation_delay);
-        }
+      async function slidePagePrev(start_index, end_index) {
+        slide_banners[start_index].style.setProperty(
+          "animation-duration",
+          animation_delay + "ms"
+        );
+        slide_banners[start_index].style.setProperty(
+          "animation-name",
+          "slideToRight"
+        );
+        slide_banners[end_index].style.setProperty("display", "block");
+        slide_banners[end_index].style.setProperty(
+          "animation-duration",
+          animation_delay + "ms"
+        );
+        slide_banners[end_index].style.setProperty(
+          "animation-name",
+          "slideFromLeft"
+        );
+        setTimeout(() => {
+          slide_banners[start_index].style.setProperty("display", "none");
+          isDisabled = false;
+        }, animation_delay);
+      }
 
-        function slideClickEvent(target){
-            if(isDisabled){
-                return false;
-            } else {
-                isDisabled = true;
-                const cur_slide_banner = document.querySelector(".slide_banner_cell[style*=\"display: block\"]");
-                const cur_slide_banner_index = Number(Object.keys(slide_banners).find(key => slide_banners[key] == cur_slide_banner));
-                if(target.classList.contains("prev_btn")){
-                    const prev_slide_banner_index = cur_slide_banner_index == 0 ? slide_banners.length - 1 : cur_slide_banner_index - 1;
-                    slidePagePrev(cur_slide_banner_index, prev_slide_banner_index);
-                    slide_pages[cur_slide_banner_index].classList.remove("cur");
-                    slide_pages[prev_slide_banner_index].classList.add("cur");
-                } else if(target.classList.contains("next_btn")){
-                    const next_slide_banner_index = cur_slide_banner_index == slide_banners.length - 1 ? 0 : cur_slide_banner_index + 1;
-                    slidePageNext(cur_slide_banner_index, next_slide_banner_index);
-                    slide_pages[cur_slide_banner_index].classList.remove("cur");
-                    slide_pages[next_slide_banner_index].classList.add("cur");
-                } else {
-                    const slide_page_index = Number(Object.keys(slide_pages).findIndex(key => slide_pages[key] == target));
-                    if(slide_page_index != -1){
-                        const cur_slide_pages = document.querySelector(".slide_page > ol > li.cur");
-                        const cur_slide_page_index = Number(Object.keys(slide_pages).findIndex(key => slide_pages[key] == cur_slide_pages));
-                        if(cur_slide_page_index < slide_page_index){
-                            slidePageNext(cur_slide_banner_index, slide_page_index);
-                        } else {
-                            slidePagePrev(cur_slide_banner_index, slide_page_index);
-                        }
-                        slide_pages[cur_slide_page_index].classList.remove("cur");
-                        slide_pages[slide_page_index].classList.add("cur");
-                    }
-                }
+      function slideClickEvent(target) {
+        if (isDisabled) {
+          return false;
+        } else {
+          isDisabled = true;
+          const cur_slide_banner = document.querySelector(
+            '.slide_banner_cell[style*="display: block"]'
+          );
+          const cur_slide_banner_index = Number(
+            Object.keys(slide_banners).find(
+              (key) => slide_banners[key] == cur_slide_banner
+            )
+          );
+          if (target.classList.contains("prev_btn")) {
+            const prev_slide_banner_index =
+              cur_slide_banner_index == 0
+                ? slide_banners.length - 1
+                : cur_slide_banner_index - 1;
+            slidePagePrev(cur_slide_banner_index, prev_slide_banner_index);
+            slide_pages[cur_slide_banner_index].classList.remove("cur");
+            slide_pages[prev_slide_banner_index].classList.add("cur");
+          } else if (target.classList.contains("next_btn")) {
+            const next_slide_banner_index =
+              cur_slide_banner_index == slide_banners.length - 1
+                ? 0
+                : cur_slide_banner_index + 1;
+            slidePageNext(cur_slide_banner_index, next_slide_banner_index);
+            slide_pages[cur_slide_banner_index].classList.remove("cur");
+            slide_pages[next_slide_banner_index].classList.add("cur");
+          } else {
+            const slide_page_index = Number(
+              Object.keys(slide_pages).findIndex(
+                (key) => slide_pages[key] == target
+              )
+            );
+            if (slide_page_index != -1) {
+              const cur_slide_pages = document.querySelector(
+                ".slide_page > ol > li.cur"
+              );
+              const cur_slide_page_index = Number(
+                Object.keys(slide_pages).findIndex(
+                  (key) => slide_pages[key] == cur_slide_pages
+                )
+              );
+              if (cur_slide_page_index < slide_page_index) {
+                slidePageNext(cur_slide_banner_index, slide_page_index);
+              } else {
+                slidePagePrev(cur_slide_banner_index, slide_page_index);
+              }
+              slide_pages[cur_slide_page_index].classList.remove("cur");
+              slide_pages[slide_page_index].classList.add("cur");
             }
+          }
         }
+      }
     </script>
-</body>
+  </body>
 </html>

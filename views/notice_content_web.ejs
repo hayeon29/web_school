@@ -1,57 +1,77 @@
 <!DOCTYPE html>
-<html lang="en">
-<%- include('layouts/header') -%>
-<link rel="stylesheet" href="/css/content_web_style.css">
-<link rel="stylesheet" href="/css/menu_web_style.css">
-<body>
+<html lang="ko">
+  <%- include('layouts/header') -%>
+  <link rel="stylesheet" href="/css/content_web_style.css" />
+  <link rel="stylesheet" href="/css/menu_web_style.css" />
+  <body>
     <%- include('layouts/navbar') -%>
-    <div class = "hero_banner">
-
-    </div>
-    <article class = "specific_page_container">
-        <div class = "lnb_container">
-            <nav class = "lnb_container_nav">
-                <div class = "nav_header">
-                    <span>
-                        공지사항
-                    </span>
-                </div>
-                <ol class = "nav_container">
-                    <li><a href = "/notice?page=1"><span>공지사항</span></a></li>
-                    <li><span>오늘의 급식</span></li>
-                </ol>
-            </nav>
+    <div class="hero_banner"></div>
+    <article class="specific_page_container">
+      <div class="lnb_container">
+        <nav class="lnb_container_nav">
+          <div class="nav_header">
+            <span> 공지사항 </span>
+          </div>
+          <ol class="nav_container">
+            <li>
+              <a href="/notice?page=1"><span>공지사항</span></a>
+            </li>
+            <li><span>오늘의 급식</span></li>
+          </ol>
+        </nav>
+      </div>
+      <div class="content_container">
+        <h1 class="content_big_title">공지사항</h1>
+        <div class="content_header">
+          <span class="content_title"><%= notice.title %></span>
+          <div class="content_info">
+            <div class="content_date">
+              <span>작성일</span>&nbsp;<span><%= notice.DATE %></span>
+            </div>
+            <div class="content_writer">
+              <span>작성자</span>&nbsp;<span><%= notice.writerID %></span>
+            </div>
+            <div class="content_hits">
+              <span>관리자</span>&nbsp;<span><%= notice.hits %></span>
+            </div>
+          </div>
         </div>
-        <div class="content_container">
-            <h1 class="content_big_title">공지사항</h1>
-            <div class="content_header">
-                <span class = "content_title"><%= notice.title %></span>
-                <div class="content_info">
-                    <div class="content_date"><span>작성일</span>&nbsp;<span><%= notice.DATE %></span></div>
-                    <div class="content_writer"><span>작성자</span>&nbsp;<span><%= notice.writerID %></span></div>
-                    <div class="content_hits"><span>관리자</span>&nbsp;<span><%= notice.hits %></span></div>
-                </div>
-            </div>
-            <div class="content_content">
-                <%- notice.content %>
-            </div>
-            <div class="content_file_attachment">
-                <li>
-                    <i class="file_icon"></i>
-                    <span class = "file_name">file_1.jpg</span>
-                    &nbsp;
-                    <span class="file_volume">(64KB)</span>
-                </li>
-            </div>
-            <div class="content_footer">
-                <% if(user_id == notice.writerID) { %> 
-                    <button id = "content_update" class="write" type="button" title="수정" onclick = "updateContent()">수정</button>
-                    <button id = "content_delete" class="write" type="button" title="삭제" onclick = "deleteContent()">삭제</button>
-                <% } %>
-                <button id = "content_list" class="write" type = "button"><a href="/notice?page=1">목록</a></button>
-            </div>
+        <div class="content_content"><%- notice.content %></div>
+        <div class="content_file_attachment">
+          <li>
+            <i class="file_icon"></i>
+            <span class="file_name">file_1.jpg</span>
+            &nbsp;
+            <span class="file_volume">(64KB)</span>
+          </li>
         </div>
+        <div class="content_footer">
+          <% if(user_id == notice.writerID) { %>
+          <button
+            id="content_update"
+            class="write"
+            type="button"
+            title="수정"
+            onclick="updateContent()"
+          >
+            수정
+          </button>
+          <button
+            id="content_delete"
+            class="write"
+            type="button"
+            title="삭제"
+            onclick="deleteContent()"
+          >
+            삭제
+          </button>
+          <% } %>
+          <button id="content_list" class="write" type="button">
+            <a href="/notice?page=1">목록</a>
+          </button>
+        </div>
+      </div>
     </article>
-    <script type = "text/javascript" src = "/js/content_event.js"></script>
-</body>
+    <script type="text/javascript" src="/js/content_event.js"></script>
+  </body>
 </html>

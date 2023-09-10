@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <%- include('layouts/header') %>
+  <link rel="stylesheet" href="/css/menu_web_style.css" />
+  <link rel="stylesheet" href="/css/meal_web_style.css" />
+  <body>
+    <%- include('layouts/navbar') %>
+    <div class="hero_banner"></div>
+    <article class="specific_page_container">
+      <div class="lnb_container">
+        <nav class="lnb_container_nav">
+          <div class="nav_header">
+            <span> 공지사항 </span>
+          </div>
+          <ol class="nav_container">
+            <li>
+              <a href="/notice?page=1"><span>공지사항</span></a>
+            </li>
+            <li>
+              <a href="/meal"><span>오늘의 급식</span></a>
+            </li>
+          </ol>
+        </nav>
+      </div>
+      <div class="content_container monthly">
+        <h1 class="content_big_title">오늘의 급식</h1>
+        <div class="view_select_container">
+          <div>
+            <input
+              type="radio"
+              id="monthly_view"
+              name="monthly_view"
+              value="monthly_view"
+              checked
+            />
+            <label
+              for="monthly_view"
+              class="cur"
+              onclick="changeWeekMonthMenu(this)"
+              ><span>월별</span></label
+            >
+          </div>
+          <div>
+            <input
+              type="radio"
+              id="weekly_view"
+              name="weekly_view"
+              value="weekly_view"
+            />
+            <label for="weekly_view" onclick="changeWeekMonthMenu(this)"
+              ><span>주별</span></label
+            >
+          </div>
+        </div>
+        <div class="meal_calendar_header">
+          <button class="prev"></button>
+          <span>
+            <span name="year">2023</span>
+            년
+            <span name="month">09</span>
+            월
+            <span name="week"></span>
+          </span>
+          <button class="next"></button>
+        </div>
+        <div class="meal_calendar_content">
+          <table id="meal_table">
+            <caption>
+              월, 일별 식단 정보
+            </caption>
+            <thead>
+              <tr>
+                <th class="day" scope="col">일</th>
+                <th class="day" scope="col">월</th>
+                <th class="day" scope="col">화</th>
+                <th class="day" scope="col">수</th>
+                <th class="day" scope="col">목</th>
+                <th class="day" scope="col">금</th>
+                <th class="day" scope="col">토</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </article>
+    <script type="text/javascript" src="./js/meal_calendar_load.js"></script>
+  </body>
+</html>
